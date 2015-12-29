@@ -1,10 +1,15 @@
 class WorkdaysController < ApplicationController
   before_action :set_workday, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:index]
 
   # GET /workdays
   # GET /workdays.json
   def index
-    @workdays = Workday.all
+    if @current_user == nil
+      @workdays = Workday.all
+    else
+      @workdays = @current_user.workdays
+    end
   end
 
   # GET /workdays/1
@@ -65,6 +70,10 @@ class WorkdaysController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_workday
       @workday = Workday.find(params[:id])
+    end
+
+    def set_user
+      @current_user = User.find_by(id: params[:user_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -15,7 +15,7 @@
   <%= @user.workdays.count %>
 </p>
 
-<% @user.workdays.each do |wd| %>
+<% @workdays.each do |wd| %>
   <ul>
     <li>Date: <%= wd.dayDate %> - Hours: <%= wd.hoursWorked %></li>
   </ul>
