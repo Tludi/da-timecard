@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Workdays</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hoursworked</th>
+      <th>User</th>
+      <th>Daydate</th>
+      <th>Project</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @workdays.each do |workday| %>
+      <tr>
+        <td><%= workday.hoursWorked %></td>
+        <td><%= workday.user_id %></td>
+        <td><%= workday.dayDate %></td>
+        <td><%= workday.project_id %></td>
+        <td><%= workday.notes %></td>
+        <td><%= link_to 'Show', workday %></td>
+        <td><%= link_to 'Edit', edit_workday_path(workday) %></td>
+        <td><%= link_to 'Destroy', workday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Workday', new_workday_path %>
