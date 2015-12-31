@@ -10,6 +10,7 @@ class WorkdaysController < ApplicationController
     else
       @workdays = @current_user.workdays
     end
+    render json: @workdays
   end
 
   # GET /workdays/1
