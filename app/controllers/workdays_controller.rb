@@ -1,6 +1,7 @@
 class WorkdaysController < ApplicationController
   before_action :set_workday, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:index]
+  skip_before_filter :verify_authenticity_token, :only => [:create]
 
   # GET /workdays
   # GET /workdays.json
