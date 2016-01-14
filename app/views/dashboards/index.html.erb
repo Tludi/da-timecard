@@ -1,0 +1,28 @@
+<!-- Dashboard index.html.erb -->
+
+
+<div class="container">
+  <h2>Dashboard</h2>
+  <div class="container">
+    <table class="table table-striped">
+      <tr>
+        <th>Users</th>
+        <th>Role</th>
+        <th>Workdays</th>
+        <th></th>
+      </tr>
+      <% @users.each do |u| %>
+      <tr>
+        <td><%= u.firstName %></td>
+        <td><%= u.role %></td>
+        <td><%= u.workdays.count %></td>
+        <td><%= link_to "show", user_path(u) %></td>
+      </tr>
+      <% end -%>
+    </table>
+  </div>
+</div>
+
+
+
+
