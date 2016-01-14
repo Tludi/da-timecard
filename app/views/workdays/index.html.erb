@@ -1,8 +1,10 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
 
-  <h1>Listing Workdays</h1>
+  <h1>Workdays</h1>
   <div class="container">
+    <% @users.each do |u| %>
+    <h3><%= u.firstName %></h3>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -16,7 +18,7 @@
       </thead>
 
       <tbody>
-        <% @workdays.each do |workday| %>
+        <% u.workdays.each do |workday| %>
           <tr>
             <td><%= workday.hoursWorked %></td>
             <td><%= workday.user.firstName %></td>
@@ -30,6 +32,7 @@
         <% end %>
       </tbody>
     </table>
+    <% end -%>
 
     <br>
 

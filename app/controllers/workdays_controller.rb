@@ -6,6 +6,8 @@ class WorkdaysController < ApplicationController
   # GET /workdays
   # GET /workdays.json
   def index
+    @users = User.all
+
     if @current_user == nil
       @workdays = Workday.all
     else
