@@ -1,6 +1,9 @@
 # Create 5 users
+@firstNames = Array["John", "Jose", "Amy", "Pat", "Bill"]
+@lastNames = Array["Smith", "Jones", "Walker", "Williams", "Jefferson"]
+
 5.times do |i|
-  User.create(firstName: "User ##{i}", lastName: "Surname ##{i}", role: "Crew" )
+  User.create(firstName: @firstNames[i], lastName: @lastNames[i], role: "Crew" )
 end
 
 users = User.all
