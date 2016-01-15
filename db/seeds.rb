@@ -31,3 +31,5 @@ workdays = Workday.all
 puts workdays.count
 
 Project.create(name: "Willamette House")
+Project.create(name: "Portland House")
+Project.create(name: "Tigard House")
