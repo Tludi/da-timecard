@@ -29,3 +29,5 @@ end
 workdays = Workday.all
 # print workday count to terminal for verification
 puts workdays.count
+
+Project.create(name: "Willamette House")
