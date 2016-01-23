@@ -3,7 +3,7 @@
 @lastNames = Array["Smith", "Jones", "Walker", "Williams", "Jefferson"]
 
 5.times do |i|
-  User.create(firstName: @firstNames[i], lastName: @lastNames[i], role: "Crew" )
+  User.create(firstName: @firstNames[i], lastName: @lastNames[i], role: "Crew", pin: 1234 )
 end
 
 users = User.all
