@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :projects
   root 'dashboards#index'
+  get 'home', to: 'home#index'
+  get 'login', to: 'home#login' 
 
   resources :workdays
   resources :users do

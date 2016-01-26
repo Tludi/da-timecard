@@ -1,3 +1,6 @@
+# database seed file for creating sample users each with 5 workdays
+
+
 # Create 5 users
 @firstNames = Array["John", "Jose", "Amy", "Pat", "Bill"]
 @lastNames = Array["Smith", "Jones", "Walker", "Williams", "Jefferson"]
