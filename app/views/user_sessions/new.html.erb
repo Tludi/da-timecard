@@ -1,0 +1,22 @@
+<div class="row login_box">
+
+  <div class="col-md-3 center-block">
+    <h1>Login</h1>
+    
+    <%= form_tag user_sessions_path, :method => :post do %>
+      
+      <div class="field">
+        <%= text_field_tag :email, "", placeholder: "Email", class:"form-input" %>
+      </div>
+      <div class="field">
+        <%= text_field_tag :password, "", placeholder: "Password", class:"form-input"%>
+      </div>
+      <div class="actions">
+        <%= submit_tag "Sign in", class: "btn btn-primary width250" %>
+      </div>
+      
+    <% end -%>
+
+  </div>
+
+</div>

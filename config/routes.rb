@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  resources :user_sessions
+
+  resources :users
   resources :projects
   root 'dashboards#index'
   get 'home', to: 'home#index'
-  get 'login', to: 'home#login' 
+
+  get 'login' => 'user_sessions#new', :as => :login
+  post 'logout' => 'user_sessions#destroy', :as => :logout
 
   resources :workdays
   resources :users do

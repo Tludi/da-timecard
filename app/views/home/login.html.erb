@@ -1,27 +1,24 @@
 <!-- login.html.erb -->
-<div class="login_box">
-  <div class="container">
-    <div class="row">
- 
-        <div id="login_form" class="col-md-4 centered">
-          <h1>Login</h1>
-          
-          <%= form_for @user do |f|%>
-            
-            <div class="field">
-              <%= f.text_field :firstName, placeholder: "First Name" %>
-            </div>
-            <div class="field">
-              <%= f.text_field :lastName, placeholder: "password / pin (lastName)" %>
-            </div>
-            <div class="actions">
-              <%= f.submit "Sign in", class: "btn btn-primary" %>
-            </div>
-            
-          <% end -%>
 
-        </div>
- 
-    </div>
+<div class="row login_box">
+
+  <div class="col-md-3 center-block">
+    <h1>Login</h1>
+    
+    <%= form_for @user do |f|%>
+      
+      <div class="field">
+        <%= f.text_field :firstName, placeholder: "First Name", class:"form-input" %>
+      </div>
+      <div class="field">
+        <%= f.text_field :lastName, placeholder: "password / pin (lastName)", class:"form-input"%>
+      </div>
+      <div class="actions">
+        <%= f.submit "Sign in", class: "btn btn-primary width250" %>
+      </div>
+      
+    <% end -%>
+
   </div>
+
 </div>
