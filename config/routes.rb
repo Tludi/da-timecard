@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :projects
-  root 'dashboards#index'
+  root 'home#index'
   get 'home', to: 'home#index'
 
   get 'login' => 'user_sessions#new', :as => :login
