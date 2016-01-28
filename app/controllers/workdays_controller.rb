@@ -20,10 +20,9 @@ class WorkdaysController < ApplicationController
     @timePunch = TimePunch.new
     @latestTimePunch = @workday.timePunches.last
     @timePunchStatus = @latestTimePunch.clockedInStatus if @latestTimePunch
-  
     @currentWorkdayTimePunches = @workday.timePunches
 
-    @mytime = Time.now
+    @current_project = Project.find(@workday.project_id)
   end
 
   # GET /workdays/new

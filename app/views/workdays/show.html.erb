@@ -1,23 +1,23 @@
 <p id="notice"><%= notice %></p>
 <p><%= Time.now.strftime("%l:%M %P") %></p>
 <p>
-  <strong>Hoursworked:</strong>
+  <strong>Hours Worked:</strong>
   <%= @workday.hoursWorked %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @workday.user_id %>
+  <%= current_user.firstName + " " + current_user.lastName %>
 </p>
 
 <p>
-  <strong>Daydate:</strong>
+  <strong>Todays Date:</strong>
   <%= @workday.dayDate %>
 </p>
 
 <p>
   <strong>Project:</strong>
-  <%= @workday.project_id %>
+  <%= @current_project.name %>
 </p>
 
 <p>
@@ -25,9 +25,8 @@
   <%= @workday.notes %>
 </p>
 <hr>
+
 <%= render 'timePunchForm' %>
-
-
 
 <div class="row">
   <% @currentWorkdayTimePunches.each do |tp| %>
@@ -47,7 +46,7 @@
 
 
 <hr>
-<%= @mytime.localtime %>
+
 <br>
 <%=  Time.now %>
 <br>

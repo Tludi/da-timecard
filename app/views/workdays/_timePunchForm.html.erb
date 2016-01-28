@@ -1,10 +1,13 @@
 <!-- _timePunchForm.html.erb -->
-<p>hello</p>
+<h4>Current Status</h4>
 <% if @timePunchStatus %>
-  <p>Clocked In</p>
+  <h4 class="label label-success">Clocked In</h4>
 <% else %>
-  <p>Clocked Out</p>
+  <h4 class="label label-danger">Clocked Out</h4>
 <% end %>
+
+<br>
+<br>
 
 <%= form_for [@workday, @timePunch] do |f| -%>
   <div class="actions">
