@@ -35,3 +35,29 @@
     <%= f.submit %>
   </div>
 <% end %>
+<hr>
+
+<%= render 'timePunchForm' %>
+
+<% if @timePunches %>
+  <% @timePunches.each do |tp| %>
+    <p><%= tp.entry %></p>
+    <p><%= @timePunches.count %></p>
+  <% end %>
+<% end %>
+
+
+<hr>
+<p>Today is: <%= Date.today %></p>
+<p>Time now is: <%= Time.now %></p>
+
+  <% counter = 0 %>
+<% @userWorkdays.each do |wd| %>
+  <p><%= wd.dayDate %></p>
+  <% if wd.dayDate == Date.today %>
+    <% counter += 1 %>
+    <p><%= wd.dayDate %> is Today</p>
+  <% end %>
+
+<% end %>
+<p>counter is: <%= counter %></p>

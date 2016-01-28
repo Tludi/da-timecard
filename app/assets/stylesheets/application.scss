@@ -24,7 +24,7 @@ background-color:#eee;
 text-align:center;
 }
 
-body.new {
+body.user_sessionsnew {
   margin:0 auto;
   /*margin-top:-20px;*/
   padding:0;
@@ -83,4 +83,11 @@ input.form-input {
 input.width250 {
   width: 250px;
   margin-top: 5px;
+}
+
+input.clockButton {
+  width:150px;
+  height:150px;
+  border: 10px solid #555;
+  border-radius: 75px;
 }

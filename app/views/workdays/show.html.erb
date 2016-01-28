@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<p><%= Time.now.strftime("%l:%M %P") %></p>
 <p>
   <strong>Hoursworked:</strong>
   <%= @workday.hoursWorked %>
@@ -24,6 +24,28 @@
   <strong>Notes:</strong>
   <%= @workday.notes %>
 </p>
+<hr>
+<%= render 'timePunchForm' %>
 
+
+
+<div class="row">
+  <% @currentWorkdayTimePunches.each do |tp| %>
+    <div class="col-md-2" >
+      <div class="well">
+      <%= tp.entry.strftime("%l:%M %P") %>
+      <% if tp.clockedInStatus %>
+        <p>In</p>
+      <% else %>
+        <p>Out</p>
+      <% end %>
+      <%= link_to 'Destroy', tp, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    </div>
+  <% end %>
+</div>
+
+
+<hr>
 <%= link_to 'Edit', edit_workday_path(@workday) %> |
 <%= link_to 'Back', workdays_path %>

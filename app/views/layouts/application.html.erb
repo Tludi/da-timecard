@@ -14,7 +14,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body class= <%= params[:action]  %> >
+<body class= <%= params[:controller] + params[:action]  %> >
 
   <!-- Navbar -->
   <nav class="navbar navbar-default">
@@ -53,9 +53,14 @@
     </div>
   </nav>
 
+<!-- <p id="notice"><%= flash[:notice] %> in main app html</p> -->
 
 <div class="container">
-<%= yield %>
+  <div>
+    <!-- <p id="alert"><%= flash[:alert] %></p> -->
+  </div>
+  
+  <%= yield %>
 
 </div>
 <br>

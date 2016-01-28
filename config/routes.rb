@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
+  resources :time_punches
   resources :user_sessions
 
   resources :users
   resources :projects
   root 'home#index'
-  get 'home', to: 'home#index'
+  get 'home' => 'home#index', :as => :home
 
   get 'login' => 'user_sessions#new', :as => :login
-  post 'logout' => 'user_sessions#destroy', :as => :logout
+  get 'logout' => 'user_sessions#destroy', :as => :logout
 
-  resources :workdays
+  resources :workdays do
+    resources :time_punches
+  end
+  
   resources :users do
     resources :workdays
   end

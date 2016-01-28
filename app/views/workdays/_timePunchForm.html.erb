@@ -1,0 +1,13 @@
+<!-- _timePunchForm.html.erb -->
+<p>hello</p>
+<% if @timePunchStatus %>
+  <p>Clocked In</p>
+<% else %>
+  <p>Clocked Out</p>
+<% end %>
+
+<%= form_for [@workday, @timePunch] do |f| -%>
+  <div class="actions">
+    <%= f.submit "Clock In/Out", class: "btn btn-primary clockButton"%>
+  </div>
+<% end -%>
