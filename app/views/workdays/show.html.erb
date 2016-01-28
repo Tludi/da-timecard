@@ -33,7 +33,7 @@
   <% @currentWorkdayTimePunches.each do |tp| %>
     <div class="col-md-2" >
       <div class="well">
-      <%= tp.entry.strftime("%l:%M %P") %>
+      <%= local_time(tp.created_at) %>
       <% if tp.clockedInStatus %>
         <p>In</p>
       <% else %>
@@ -47,5 +47,9 @@
 
 
 <hr>
+<%= @mytime.localtime %>
+<br>
+<%=  Time.now %>
+<br>
 <%= link_to 'Edit', edit_workday_path(@workday) %> |
 <%= link_to 'Back', workdays_path %>

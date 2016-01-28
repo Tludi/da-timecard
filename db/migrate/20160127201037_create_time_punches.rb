@@ -1,7 +1,7 @@
 class CreateTimePunches < ActiveRecord::Migration
   def change
     create_table :time_punches do |t|
-      t.time :entry
+      t.datetime :entry
       t.integer :workday_id
       t.boolean :clockedInStatus
 

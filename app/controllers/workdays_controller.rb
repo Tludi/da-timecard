@@ -22,6 +22,8 @@ class WorkdaysController < ApplicationController
     @timePunchStatus = @latestTimePunch.clockedInStatus if @latestTimePunch
   
     @currentWorkdayTimePunches = @workday.timePunches
+
+    @mytime = Time.now
   end
 
   # GET /workdays/new

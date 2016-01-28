@@ -13,8 +13,12 @@ class TimePunchesController < ApplicationController
       @lastTimePunch = @workday.timePunches.last
       @currentStatus = @lastTimePunch.clockedInStatus
     end
+
+    @mytime = Time.now.utc
+
+
     
-    @timePunch = @workday.timePunches.build(:entry => Time.now, :clockedInStatus => !@currentStatus )
+    @timePunch = @workday.timePunches.build(:entry => @mytime.localtime, :clockedInStatus => !@currentStatus )
 
     respond_to do |format|
       if @workday.save
