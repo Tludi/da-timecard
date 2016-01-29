@@ -7,7 +7,15 @@ class UserSessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password])
-      redirect_back_or_to(:home, notice: "Logged In!")
+
+      @userWorkday = Workday.retrieveCurrentWorkday(@user)
+      if @userWorkday == true
+        redirect_to(@userWorkday)
+      else
+        @newWorkday = Workday.createCurrentWorkday(@user)
+        redirect_to(@newWorkday)
+        # redirect_to(:home)
+      end
     else
       flash.now[:alert] = 'Login failed'
       render action: 'new'
