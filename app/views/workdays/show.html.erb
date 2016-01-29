@@ -11,8 +11,8 @@
 </p>
 
 <p>
-  <strong>Todays Date:</strong>
-  <%= Date.today %>
+  <strong>Date:</strong>
+  <%= local_time(@workday.created_at, '%m %d %Y') %>
 </p>
 
 <p>
