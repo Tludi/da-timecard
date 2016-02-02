@@ -24,16 +24,22 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# added for Heroku use
 gem 'rails_12factor'
 
+# added to format json for API
 gem 'active_model_serializers'
 
+# gems for formatting time correctly in app
 gem 'local_time'
 gem 'time_difference'
 
-# gem 'bootstrap-sass', '~> 3.3.6'
+# gem 'bootstrap-sass', '~> 3.3.6' # added to app by cdn
 
 gem 'sorcery'
+
+# gem 'administrate', gem "administrate", "~> 0.1.3"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
