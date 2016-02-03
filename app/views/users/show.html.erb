@@ -3,12 +3,17 @@
 
   <p>
     <strong>Firstname:</strong>
-    <%= @user.firstName %>
+    <%= @user.firstName + " " + @user.lastName%>
   </p>
 
   <p>
-    <strong>Lastname:</strong>
-    <%= @user.lastName %>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
+
+  <p>
+    <strong>Role:</strong>
+    <%= @user.role %>
   </p>
 
   <p>

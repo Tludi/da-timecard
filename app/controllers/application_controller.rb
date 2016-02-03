@@ -5,5 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_action :require_login
 
+  def is_admin?
+    current_user.role == "Admin"
+  end
 
 end

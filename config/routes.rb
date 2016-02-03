@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :user_sessions
   resources :users
   resources :projects
+  resources :dashboards
 
   get 'home' => 'home#index', :as => :home
   get 'login' => 'user_sessions#new', :as => :login
