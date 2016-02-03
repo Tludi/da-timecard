@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
+  root 'home#index'
+
+  namespace :admin do
+    root 'dashboard#index'
+    resources :users
+    resources :dashboards
+  end
+
   resources :time_punches
   resources :user_sessions
-
   resources :users
   resources :projects
-  root 'home#index'
-  get 'home' => 'home#index', :as => :home
 
+  get 'home' => 'home#index', :as => :home
   get 'login' => 'user_sessions#new', :as => :login
   get 'logout' => 'user_sessions#destroy', :as => :logout
 
