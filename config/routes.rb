@@ -3,15 +3,19 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'dashboard#index'
-    resources :users
+    resources :users do
+      resources :workdays
+    end
     resources :dashboards
   end
 
   resources :time_punches
   resources :user_sessions
-  resources :users
+  # resources :users
   resources :projects
   resources :dashboards
+
+  get 'user/:id' => 'users#show', as: :user
 
   get 'home' => 'home#index', :as => :home
   get 'login' => 'user_sessions#new', :as => :login
@@ -21,9 +25,9 @@ Rails.application.routes.draw do
     resources :time_punches
   end
   
-  resources :users do
-    resources :workdays
-  end
+  # resources :users do
+  #   resources :workdays
+  # end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -3,10 +3,10 @@
 class Admin::AdminController < ApplicationController
   layout 'admin'
   before_filter :require_login
-  before_action :is_admin?
+  before_action :require_admin
 
   private
-    def is_admin?
+    def require_admin
       unless current_user.role == "Admin"
         redirect_to dashboards_path(current_user)
       end
