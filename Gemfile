@@ -30,6 +30,9 @@ gem 'rails_12factor'
 # added to format json for API
 gem 'active_model_serializers'
 
+# added to use gravatars
+gem 'gravtastic'
+
 # gems for formatting time correctly in app
 gem 'local_time'
 gem 'time_difference'

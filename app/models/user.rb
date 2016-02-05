@@ -12,4 +12,7 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
+  include Gravtastic
+  gravtastic default: "mm"
+
 end
