@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :workdays
     end
     resources :dashboards
+    resources :projects
   end
 
   resources :time_punches

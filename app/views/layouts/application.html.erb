@@ -36,6 +36,7 @@
           <li class="active"><%= link_to "Dashboard", dashboards_path(current_user) %><span class="sr-only">(current)</span></li>
           <% if logged_in? %>
             <li><%= link_to "Today", workday_path(current_user.workdays.last)  %></li>
+            <li><%= link_to "Workdays", workdays_path(current_user)  %></li>
           <% end %>
         </ul>
         

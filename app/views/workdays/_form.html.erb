@@ -11,33 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :hoursWorked %><br>
-    <%= f.text_field :hoursWorked %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :dayDate %><br>
-    <%= f.date_select :dayDate %>
-  </div>
+
+
   <div class="field">
     <%= f.label :project_id %><br>
-    <%= f.number_field :project_id %>
+    <%= f.select(:project_id, 
+                 current_user.projects.uniq.map { |project| project.name }) %>
   </div>
-  <div class="field">
-    <%= f.label :notes %><br>
-    <%= f.text_area :notes %>
-  </div>
+  <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Select Project", class: "btn btn-primary"%>
   </div>
 <% end %>
+  
 <hr>
+<%= render 'timePunchForm' %>
 
-
+<hr>
 
 <% if @timePunches %>
   <% @timePunches.each do |tp| %>
@@ -50,14 +40,3 @@
 <hr>
 <p>Today is: <%= Date.today %></p>
 <p>Time now is: <%= Time.now %></p>
-
-  <% counter = 0 %>
-<% @userWorkdays.each do |wd| %>
-  <p><%= wd.dayDate %></p>
-  <% if wd.dayDate == Date.today %>
-    <% counter += 1 %>
-    <p><%= wd.dayDate %> is Today</p>
-  <% end %>
-
-<% end %>
-<p>counter is: <%= counter %></p>
