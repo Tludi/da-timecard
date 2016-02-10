@@ -5,6 +5,7 @@
 <p>Local time created_at <%= local_time(@workday.created_at, '%B %e, %Y %l:%M%P')%></p>
 <p>Local time time.now: <%= local_time(Time.now) %></p>
 <p>Local date: <%= local_date(Time.now) %></p>
+<hr>
 <p>
   <strong>Hours Worked:</strong>
   <%= @hoursWorked %>
@@ -17,22 +18,36 @@
 
 <p>
   <strong>Date:</strong>
-  <%= local_time(@workday.created_at, '%m %d %Y') %>
+  <%= @workday.dayDate.strftime("%B %e, %Y") %>
 </p>
 
 <p>
-  <strong>Project:</strong>
-  <%= @current_project.name %>
+  <%= render 'form' %>
 </p>
 
 <p>
   <strong>Notes:</strong>
   <%= @workday.notes %>
 </p>
+
+
+
+<hr>
+<%= render 'timePunchForm' %>
+
 <hr>
 
-<%= render 'form' %>
+<% if @timePunches %>
+  <% @timePunches.each do |tp| %>
+    <p><%= tp.entry %></p>
+    <p><%= @timePunches.count %></p>
+  <% end %>
+<% end %>
 
+
+<hr>
+<p>Today is: <%= Date.today %></p>
+<p>Time now is: <%= Time.now %></p>
 <div class="row row-centered">
     <div class="col-md-2"></div>
   <% @currentWorkdayTimePunches.each do |tp| %>

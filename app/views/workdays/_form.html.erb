@@ -14,29 +14,9 @@
 
 
   <div class="field">
-    <%= f.label :project_id %><br>
+    <%= f.label "project:" %>
     <%= f.select(:project_id, 
                  current_user.projects.uniq.map { |project| [project.name, project.id] }) %>
-  </div>
-  <br>
-  <div class="actions">
-    <%= f.submit "Select Project", :action => 'update', class: "btn btn-primary"%>
-  </div>
+    <%= f.submit "Change Project", :action => 'update', class: "btn btn-primary btn-xs"%>
 <% end %>
   
-<hr>
-<%= render 'timePunchForm' %>
-
-<hr>
-
-<% if @timePunches %>
-  <% @timePunches.each do |tp| %>
-    <p><%= tp.entry %></p>
-    <p><%= @timePunches.count %></p>
-  <% end %>
-<% end %>
-
-
-<hr>
-<p>Today is: <%= Date.today %></p>
-<p>Time now is: <%= Time.now %></p>
