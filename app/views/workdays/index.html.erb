@@ -22,7 +22,7 @@
           <tr>
             <td><%= workday.hoursWorked %></td>
             <td><%= "#{workday.user.firstName} #{workday.user.lastName}" %></td>
-            <td><%= local_time(workday.created_at, '%m %d %Y') %></td>
+            <td><%= workday.dayDate.strftime('%m/%d/%Y') %></td>
             <td><%= workday.project.name %></td>
             <td><%= workday.notes %></td>
             <td><%= link_to 'Show', workday %></td>

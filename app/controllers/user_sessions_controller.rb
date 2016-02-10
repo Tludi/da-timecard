@@ -11,11 +11,11 @@ class UserSessionsController < ApplicationController
         redirect_to(admin_root_path)
       else
         @userWorkday = Workday.retrieveCurrentWorkday(@user)
-        if @userWorkday == true
-          redirect_to(@userWorkday)
+        if @userWorkday
+          redirect_to(workday_path(@userWorkday), notice: "retrieved existing workday")
         else
           @newWorkday = Workday.createCurrentWorkday(@user)
-          redirect_to(@newWorkday)
+          redirect_to(@newWorkday, notice: "created new workday")
           # redirect_to(:home)
         end
       end

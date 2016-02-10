@@ -1,10 +1,19 @@
 <p id="notice"><%= notice %></p>
-<p>Time now: <%= Time.now.strftime("%l:%M %P") %></p>
-<p>Time now utc: <%= Time.now.utc.strftime("%l:%M %P") %></p>
+<p>Time.now: <%= Time.now.strftime("%l:%M %P") %></p>
+<p>Time.now.utc: <%= Time.now.utc.strftime("%l:%M %P") %></p>
 <p>created at: <%= @workday.created_at.strftime('%B %e, %Y %l:%M%P') %></p>
 <p>Local time created_at <%= local_time(@workday.created_at, '%B %e, %Y %l:%M%P')%></p>
-<p>Local time time.now: <%= local_time(Time.now) %></p>
-<p>Local date: <%= local_date(Time.now) %></p>
+<p>Local_time helper Time.now: <%= local_time(Time.now) %></p>
+<p>Local_date helper Time.now: <%= local_date(Time.now) %></p>
+<p>Date.today: <%= Date.today %></p>
+<p>DateTime.now: <%= DateTime.now %></p>
+<p>DateTime.now.utc: <%= DateTime.now.utc %></p>
+<p>DateTime.now.to_date: <%= DateTime.now.to_date %></p>
+<p>DateTime.now.in_time_zone.midnight: <%= DateTime.now.in_time_zone.midnight %>
+</p>
+<p>local_time zone.midnight: <%= local_time(DateTime.now.in_time_zone.midnight) %></p>
+<p>beginning of day: <%= DateTime.now.beginning_of_day %></p>
+<p>hours from now: <%= DateTime.now + 12.hours %></p>
 <hr>
 <p>
   <strong>Hours Worked:</strong>
@@ -15,12 +24,33 @@
   <strong>User:</strong>
   <%= current_user.firstName + " " + current_user.lastName %>
 </p>
-
 <p>
-  <strong>Date:</strong>
-  <%= @workday.dayDate.strftime("%B %e, %Y") %>
+  <strong>created at:</strong>
+  <%= @workday.created_at %>
+</p>
+<p>
+  <strong>created at localize:</strong>
+  <%= localize(@workday.created_at, format: :long) %>
+</p>
+<p>
+  <strong>created at before type cast:</strong>
+  <%= @workday.created_at_before_type_cast %>
+</p>
+<p>
+  <strong>dayDate:</strong>
+  <%= @workday.dayDate.strftime('%B %e,%Y') %>
 </p>
 
+  <% if @workday.dayDate == DateTime.now.to_date %>
+    <p>dates match</p>
+  <% else %>
+    <p>dates are screwed</p>
+  <% end %>
+
+<p>
+  <strong>dayDate2 local_time:</strong>
+  <%= local_date(@workday.created_at, "%B %e, %Y") %>
+</p>
 <p>
   <%= render 'form' %>
 </p>
