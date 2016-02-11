@@ -2,18 +2,23 @@ Rails.application.routes.draw do
   root 'home#index'
 
   namespace :admin do
-    root 'dashboard#index'
+    root 'dashboards#index'
     resources :users do
       resources :workdays
     end
     resources :dashboards
-    resources :projects
+    resources :projects do
+      member do
+        patch :addUser
+      end
+      resources :users
+    end
   end
 
   resources :time_punches
   resources :user_sessions
   # resources :users
-  resources :projects
+  resources :projects 
   resources :dashboards
 
   get 'user/:id' => 'users#show', as: :user

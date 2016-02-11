@@ -1,2 +1,11 @@
 <!-- show.html.erb -->
-<h1>admin project show page</h1>
+
+<h1><%= @project.name %></h1>
+
+<% @projectUsers.each do |u| %>
+  <p><%= u.firstName %></p>
+<% end %>
+
+<div>
+  <%= render "add_user_form" %>
+</div>

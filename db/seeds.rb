@@ -15,6 +15,14 @@
               pin: 1234 )
 end
 
+User.create(firstName: "admin", 
+            lastName: "admin", 
+            email: "admin", 
+            role: "Admin", 
+            password: "password", 
+            password_confirmation: "password",
+            pin: 1234 )
+
 users = User.all
 # print User count to terminal for verification
 puts users.count
@@ -25,14 +33,13 @@ puts users.count
 
 
 # Create 5 workdays for each User
-current_time = DateTime.now
 users.each do |u|
   n = 0
   5.times do |h|
     n += 24
     u.workdays.create(hoursWorked: 8, 
                       user_id: u.id,
-                      dayDate: current_time - n.hours, # set each day backwards by 24 hours
+                      dayDate: DateTime.now.to_date, # set each day backwards by 24 hours
                       project_id: 1,
                       notes: "notes to put here" )
   end
@@ -42,6 +49,7 @@ workdays = Workday.all
 # print workday count to terminal for verification
 puts workdays.count
 
+Project.create(name: "General Work")
 Project.create(name: "Willamette House")
 Project.create(name: "Portland House")
 Project.create(name: "Tigard House")

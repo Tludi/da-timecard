@@ -1,16 +1,19 @@
 # projects_controller.rb
 class Admin::ProjectsController < Admin::AdminController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :addUser]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = current_user.projects.uniq 
+    @projects = Project.all 
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @users = User.all
+    @projectUsers = @project.users.uniq
+    @user = User.new
   end
 
   # GET /projects/new
@@ -62,6 +65,12 @@ class Admin::ProjectsController < Admin::AdminController
     end
   end
 
+  def addUser
+    user = User.find(params[:user])
+    @project.users << user
+    redirect_to admin_projects_path, notice: 'User was added'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
@@ -70,6 +79,6 @@ class Admin::ProjectsController < Admin::AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :account_id)
+      params.require(:project).permit(:name, :account_id, :users => [:firstName, :lastName, :pin, :email, :password, :password_confirmation, :role] )
     end
 end

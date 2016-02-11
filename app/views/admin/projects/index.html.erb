@@ -1,3 +1,27 @@
-<!-- index.html.erb -->
+<!-- admin projects index.html.erb -->
 
-<h1>admin projects index</h1>
+<h1>Projects</h1>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Project Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= link_to 'Show', admin_project_path(project) %></td>
+        <td><%= link_to 'Edit', edit_admin_project_path(project) %></td>
+        <td><%= link_to 'Delete', admin_projects_path(project), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

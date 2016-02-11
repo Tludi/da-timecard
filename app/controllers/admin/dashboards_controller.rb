@@ -1,6 +1,6 @@
 # DashboardController.rb
 
-class Admin::DashboardController < Admin::AdminController
+class Admin::DashboardsController < Admin::AdminController
 
   def index
     @users = User.all

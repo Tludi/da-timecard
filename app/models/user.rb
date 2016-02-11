@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
   has_many :workdays, dependent: :destroy
-  has_many :projects, through: :workdays
+  has_many :projects, -> {uniq}, through: :workdays
   
   accepts_nested_attributes_for :workdays
 

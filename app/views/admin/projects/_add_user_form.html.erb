@@ -1,0 +1,29 @@
+<!-- _add_user_form.html.erb -->
+<h3>add user form</h3>
+<%= form_for [:admin, @project] do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Add User To Project" %>
+    <%= f.select(:users, @users.map { |user| [user.firstName + " " + user.lastName, user.id]}) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add User", addUser_admin_project_path, class: "btn btn-primary btn-xs"%>
+  </div>
+<% end %>
