@@ -17,7 +17,7 @@
     <%= f.label "project:" %>
     <%= f.select(:project_id, 
                  current_user.projects.uniq.map { |project| [project.name, project.id] }) %>
-  </div>
     <%= f.submit "Change Project", :action => 'update', class: "btn btn-primary btn-xs"%>
+  </div>
 <% end %>
   

@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<p>Time.now: <%= Time.now.strftime("%l:%M %P") %></p>
+<!-- <p>Time.now: <%= Time.now.strftime("%l:%M %P") %></p>
 <p>Time.now.utc: <%= Time.now.utc.strftime("%l:%M %P") %></p>
 <p>created at: <%= @workday.created_at.strftime('%B %e, %Y %l:%M%P') %></p>
 <p>Local time created_at <%= local_time(@workday.created_at, '%B %e, %Y %l:%M%P')%></p>
@@ -14,68 +14,78 @@
 <p>local_time zone.midnight: <%= local_time(DateTime.now.in_time_zone.midnight) %></p>
 <p>beginning of day: <%= DateTime.now.beginning_of_day %></p>
 <p>hours from now: <%= DateTime.now + 12.hours %></p>
+<hr> -->
+
+<div class="row">
+    <div class="col-md-12 center">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <span class="label label-success pull-right"><%= Date.today.strftime('%B %e, %Y') %></span>
+                <span><strong>
+  <%= current_user.firstName + " " + current_user.lastName %></strong></span>
+                <h5>Workday</h5>
+            </div>
+            <div class="ibox-content">
+              <p>
+                <strong>Hours Worked Today:</strong>
+                <%= @hoursWorked %>
+              </p>
+              <p>
+                <strong>dayDate:</strong>
+                <%= @workday.dayDate.strftime('%B %e, %Y') %>
+              </p>
+              <p>
+                <%= render 'form' %>
+              </p>
+
+              <p>
+                <strong>Notes:</strong>
+                <%= @workday.notes %>
+              </p>
+              
+
+              <p>
+                <strong>dayDate:</strong>
+                  <%= @workday.dayDate.strftime('%B %e, %Y') %>
+                <strong>DateTime.now.to_date:</strong>
+                  <%= DateTime.now.to_date.strftime('%B %e,%Y') %>
+              </p>
+
+                <% if @workday.dayDate == DateTime.now.to_date %>
+                  <p>dates match</p>
+                <% else %>
+                  <p>dates are screwed</p>
+                <% end %>
+
+              <p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12 center">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <span class="label label-success pull-right">Daily</span>
+                <h5>Time Clock</h5>
+            </div>
+            <div class="ibox-content">
+              <%= render 'timePunchForm' %>
+            </div>
+              <% if @timePunches %>
+                <% @timePunches.each do |tp| %>
+                  <p><%= tp.entry %></p>
+                  <p><%= @timePunches.count %></p>
+                <% end %>
+              <% end %>
+        </div>
+    </div>
+</div>
+
 <hr>
-<p>
-  <strong>Hours Worked:</strong>
-  <%= @hoursWorked %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  <%= current_user.firstName + " " + current_user.lastName %>
-</p>
-<p>
-  <strong>created at:</strong>
-  <%= @workday.created_at %>
-</p>
-<p>
-  <strong>created at localize:</strong>
-  <%= localize(@workday.created_at, format: :long) %>
-</p>
-<p>
-  <strong>created at before type cast:</strong>
-  <%= @workday.created_at_before_type_cast %>
-</p>
-<p>
-  <strong>dayDate:</strong>
-  <%= @workday.dayDate.strftime('%B %e,%Y') %>
-</p>
-
-  <% if @workday.dayDate == DateTime.now.to_date %>
-    <p>dates match</p>
-  <% else %>
-    <p>dates are screwed</p>
-  <% end %>
-
-<p>
-  <strong>dayDate2 local_time:</strong>
-  <%= local_date(@workday.created_at, "%B %e, %Y") %>
-</p>
-<p>
-  <%= render 'form' %>
-</p>
-
-<p>
-  <strong>Notes:</strong>
-  <%= @workday.notes %>
-</p>
-
-
-
-<hr>
-<%= render 'timePunchForm' %>
-
-<hr>
-
-<% if @timePunches %>
-  <% @timePunches.each do |tp| %>
-    <p><%= tp.entry %></p>
-    <p><%= @timePunches.count %></p>
-  <% end %>
-<% end %>
-
-
-<hr>
 <p>Today is: <%= Date.today %></p>
 <p>Time now is: <%= Time.now %></p>
 <div class="row row-centered">

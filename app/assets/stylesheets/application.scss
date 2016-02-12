@@ -13,29 +13,18 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
 
-/*body {
-margin:0 auto;
-margin-top:-20px;
-padding:0;
-font-family:"Lucida Grande",verdana,arial,helvetica,sans-serif;
-color:#222;
-background-color:#eee;
-text-align:center;
-}*/
 
-body.user_sessionsnew {
-  margin:0 auto;
-  /*margin-top:-20px;*/
-  padding:0;
+.user_sessionsnew, .user_sessionscreate {
   font-family:"Lucida Grande",verdana,arial,helvetica,sans-serif;
   color:#222;
-  /*background-color:#eee;*/
-  text-align:center;
-  /*min-width:870px;*/
-  background-image: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(rgba(57, 173, 219, 0.247059) 0%, rgba(42, 60, 87, 0.4) 100%), linear-gradient(135deg, rgb(103, 13, 16) 0%, rgb(9, 39, 86) 100%);
+  background-image: -webkit-radial-gradient(0% 100%, ellipse cover, 
+    rgba(104, 128, 138, 0.4) 10%, 
+    rgba(138, 114, 76, 0) 40%), 
+    linear-gradient(rgba(57, 173, 219, 0.247059) 0%, 
+      rgba(42, 60, 87, 0.4) 100%), 
+    linear-gradient(135deg, rgb(103, 13, 16) 0%, 
+        rgb(9, 39, 86) 100%);
 }
 
 h1{
