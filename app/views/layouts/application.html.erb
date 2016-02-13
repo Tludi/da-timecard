@@ -51,7 +51,7 @@
             </ul>
             <ul class="nav navbar-top-links navbar-right">
               <% if current_user %>
-                <li><%= link_to "Hello " + current_user.firstName, '#' %></li>
+                <li><%= link_to "Hello " + current_user.firstName, user_path(current_user) %></li>
                 <li><%= link_to '<i class="fa fa-sign-out"></i> Log out'.html_safe, logout_path %></li>
               <% else %>
                 <li><%= link_to '<i class="fa fa-sign-in"></i> Log in'.html_safe, login_path %></li>
@@ -71,6 +71,7 @@
       </div>
       <br>
       <%= debug(params) %>
+      <br>
             
       <%= render "shared/footer" %>
 

@@ -1,6 +1,7 @@
 class WorkdaysController < ApplicationController
   before_action :set_workday, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:index]
+  before_action :check_for_todays_workday, only: [:show]
   before_action :get_timePunches, only: [:new, :edit]
   skip_before_filter :verify_authenticity_token, :only => [:create]
 
@@ -18,6 +19,7 @@ class WorkdaysController < ApplicationController
   # GET /workdays/1.json
   def show
     @timePunch = TimePunch.new
+
     @latestTimePunch = @workday.timePunches.last
     @timePunchStatus = @latestTimePunch.clockedInStatus if @latestTimePunch
     @currentWorkdayTimePunches = @workday.timePunches
@@ -65,6 +67,8 @@ class WorkdaysController < ApplicationController
   # PATCH/PUT /workdays/1
   # PATCH/PUT /workdays/1.json
   def update
+    # @mytime = Time.now.utc
+    # @workday.timePunches.build(:entry => @mytime.localtime, :clockedInStatus => !@currentStatus )
     respond_to do |format|
       if @workday.update(workday_params)
         format.html { redirect_to @workday, notice: 'Workday was successfully updated.' }
@@ -93,10 +97,26 @@ class WorkdaysController < ApplicationController
       @workday = Workday.find(params[:id])
     end
 
+
+    def check_for_todays_workday
+      @userWorkdays = current_user.workdays
+      @current_workday = nil
+      @userWorkdays.each do |wd|
+        if wd.dayDate == DateTime.now.to_date
+          @current_workday = wd
+        end
+      end
+
+      if @current_workday == nil      
+        @current_workday = Workday.createCurrentWorkday(current_user)
+      end
+    end
+
+
     def get_timePunches
       @userWorkdays = current_user.workdays
       @userWorkdays.each do |wd|
-      if wd.dayDate == Date.today
+      if wd.dayDate == DateTime.now.to_date
         @currentUserWorkDay = wd
         @timePunches = @currentUserWorkDay.timePunches
       end

@@ -33,15 +33,15 @@ class Workday < ActiveRecord::Base
   end
 
   def self.retrieveCurrentWorkday(user)
-    today = DateTime.now.to_date
-    userWorkdays = user.workdays.all
-    userWorkdays.each do |wd|
+    wd = user.workdays.last
+    # userWorkdays = user.workdays.all
+    # userWorkdays.each do |wd|
       if wd.dayDate == DateTime.now.to_date
         wd
       else
         nil
       end
-    end
+    # end
   end
 
   def self.createCurrentWorkday(user)

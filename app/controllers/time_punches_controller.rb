@@ -2,7 +2,7 @@ class TimePunchesController < ApplicationController
   before_action :set_workday, only: [:new, :create]
 
   def new
-    @timePunch = TimePunch.new
+    @timePunch = @workday.timePunches.new
   end
 
 
@@ -15,8 +15,6 @@ class TimePunchesController < ApplicationController
     end
 
     @mytime = Time.now.utc
-
-
     
     @timePunch = @workday.timePunches.build(:entry => @mytime.localtime, :clockedInStatus => !@currentStatus )
 

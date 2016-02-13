@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 <!-- <p>Time.now: <%= Time.now.strftime("%l:%M %P") %></p>
 <p>Time.now.utc: <%= Time.now.utc.strftime("%l:%M %P") %></p>
 <p>created at: <%= @workday.created_at.strftime('%B %e, %Y %l:%M%P') %></p>
@@ -38,7 +38,7 @@
                 <%= render 'form' %>
               </p>
 
-              <p>
+<!--               <p>
                 <strong>Notes:</strong>
                 <%= @workday.notes %>
               </p>
@@ -55,9 +55,8 @@
                   <p>dates match</p>
                 <% else %>
                   <p>dates are screwed</p>
-                <% end %>
+                <% end %> -->
 
-              <p>
             </div>
         </div>
     </div>
@@ -82,35 +81,30 @@
               <% end %>
         </div>
     </div>
-</div>
-
-<hr>
-
-<p>Today is: <%= Date.today %></p>
-<p>Time now is: <%= Time.now %></p>
-<div class="row row-centered">
-    <div class="col-md-2"></div>
-  <% @currentWorkdayTimePunches.each do |tp| %>
-    <div class="col-md-2 col-centered" >
-      <div class="well">
-        <%= Time.now %>
-        <%= local_time(tp.created_at, '%l:%M %P') %>
-        <% if tp.clockedInStatus %>
-          <p>In</p>
-        <% else %>
-          <p>Out</p>
-        <% end %>
-        <%= link_to 'Destroy', tp, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <div class="col-md-12 center">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <span class="label label-success pull-right">in/out</span>
+                <h5>Time Punches</h5>
+            </div>
+            <div class="ibox-content">
+              <div class="row">
+              <% @currentWorkdayTimePunches.each do |tp| %>
+                <div class="col-md-2" >
+                  <div class="well">
+                    <%= Time.now %>
+                    <%= local_time(tp.created_at, '%l:%M %P') %>
+                    <% if tp.clockedInStatus %>
+                      <p>In</p>
+                    <% else %>
+                      <p>Out</p>
+                    <% end %>
+                    <%= link_to 'Destroy', tp, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  </div>
+                </div>
+              <% end %>
+              </div>
+        </div>
       </div>
     </div>
-  <% end %>
 </div>
-
-
-<hr>
-
-<br>
-<%=  Time.now %>
-<br>
-<%= link_to 'Edit', edit_workday_path(@workday) %> |
-<%= link_to 'Back', workdays_path %>

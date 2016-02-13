@@ -40,8 +40,10 @@
             <td><%= workday.project.name %></td>
             <td><%= workday.notes %></td>
             <td><%= link_to 'Show', workday %></td>
-            <td><%= link_to 'Edit', edit_workday_path(workday) %></td>
-            <td><%= link_to 'Delete', workday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% if current_user.role == "Supervisor" %>
+              <td><%= link_to 'Edit', edit_workday_path(workday) %></td>
+              <td><%= link_to 'Delete', workday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end -%>
           </tr>
         <% end %>
       </tbody>

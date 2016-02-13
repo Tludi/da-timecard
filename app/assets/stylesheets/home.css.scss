@@ -6,7 +6,7 @@
 div.home div.header-text,
 div.home h2
 {
-  font-family: "minion-pro-1","minion-pro-2","Times New Roman",Georgia,serif;
+  
 }
 
 div.home h2 {
@@ -18,7 +18,7 @@ div.home h2 {
 }
 
 div.home div.header-text h1 {
-  font-size: 52px;
+  font-size: 55px;
   margin-top: 60px;
   /*margin:0;*/
   text-shadow: #eee 2px 2px 2px;
@@ -27,10 +27,12 @@ div.home div.header-text h1 {
   font-weight: 500;
   letter-spacing: -1px;
   line-height: 1.1em;
+  font-family: "minion-pro-1","minion-pro-2","Times New Roman",Georgia,serif;
 }
 
 div.home div.header-text h3 {
   margin-bottom: 60px;
+  font-size: 24px;
 }
 
 .info-box {

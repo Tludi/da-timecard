@@ -8,11 +8,10 @@
 
 <br>
 <br>
+<%= form_for [@workday, @timePunch] do |wd| %>
 
-<%= fields_for @timePunch do |f| -%>
-
-  <div class="actions">
-    <%= f.submit "Clock In/Out", class: "btn btn-primary clockButton"%>
-  </div>
+    <div class="actions">
+      <%= wd.submit "Clock In/Out", class: "btn btn-primary clockButton"%>
+    </div>
 
 <% end -%>

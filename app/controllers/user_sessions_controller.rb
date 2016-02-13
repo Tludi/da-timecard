@@ -11,7 +11,7 @@ class UserSessionsController < ApplicationController
         redirect_to(admin_root_path)
       else
         @userWorkday = Workday.retrieveCurrentWorkday(@user)
-        if @userWorkday
+        if @userWorkday != nil
           redirect_to(workday_path(@userWorkday), notice: "retrieved existing workday")
         else
           @newWorkday = Workday.createCurrentWorkday(@user)
@@ -20,8 +20,9 @@ class UserSessionsController < ApplicationController
         end
       end
     else
-      flash.now[:alert] = 'Login failed'
-      render action: 'new'
+      redirect_to(login_path, notice: "Login failed. Check your email or password.")
+      # render action: 'new', notice: "Login failed"
+      # flash.now[:notice] = 'Login failed'
     end
   end
 
