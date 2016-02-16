@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-    
+
     <!-- Latest compiled and minified Bootstrap JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
@@ -21,7 +21,7 @@
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
     <!-- <link href="font-awesome/css/font-awesome.css" rel="stylesheet"> -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU= sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==" crossorigin="anonymous">
-    
+
     <!-- Toastr style -->
     <!-- <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -42,10 +42,10 @@
             <div class="dropdown profile-element"> <span>
               <%= image_tag(current_user.gravatar_url, class: "img-circle") %></span>
               <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <span class="clear"> 
-                  <span class="block m-t-xs"><strong class="font-bold"><%= userFullName %></strong></span> 
-                  <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> 
-                </span> 
+                <span class="clear">
+                  <span class="block m-t-xs"><strong class="font-bold"><%= userFullName %></strong></span>
+                  <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                </span>
               </a>
               <ul class="dropdown-menu animated fadeInRight m-t-xs">
                 <li><a href="profile.html">Profile</a></li>
@@ -277,7 +277,7 @@
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                    <span class="m-r-sm text-muted welcome-message"><%= current_user.account.name %> - <strong>Tract</strong>Work</span>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -396,7 +396,7 @@
                     <%= yield %>
 
 
-                    
+
                     <div class="col-sm-3">
                         <h2>Welcome Amelia</h2>
                         <small>You have 42 messages and 6 notifications.</small>

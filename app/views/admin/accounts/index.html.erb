@@ -1,0 +1,20 @@
+<table class="table table-striped">
+  <tr>
+    <th>Account Name:</th>
+    <th>Admin Name:</th>
+    <th>Admin Email:</th>
+    <th>Time Zone:</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @accounts.each do |account %>
+    <tr>
+      <td><%= account.name %></td>
+      <td><%= account.users.first.firstName %></td>
+      <td><%= account.users.first.email %></td>
+      <td><%= account.time_zone %></td>
+      <td><%= link_to 'Show', admin_account %></td>
+      
+    </tr>
+</table>

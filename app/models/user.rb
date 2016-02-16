@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
+  belongs_to :account
 
   has_many :workdays, dependent: :destroy
   has_many :projects, -> {uniq}, through: :workdays
-  
+
   accepts_nested_attributes_for :workdays
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes["password"] }

@@ -3,10 +3,16 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'dashboards#index'
+    resources :accounts do
+      resources :users
+    end
+
     resources :users do
       resources :workdays
     end
+
     resources :dashboards
+
     resources :projects do
       member do
         patch :addUser
@@ -18,7 +24,7 @@ Rails.application.routes.draw do
   resources :time_punches
   resources :user_sessions
   # resources :users
-  resources :projects 
+  resources :projects
   resources :dashboards
 
   get 'user/:id' => 'users#show', as: :user
@@ -30,7 +36,7 @@ Rails.application.routes.draw do
   resources :workdays do
     resources :time_punches
   end
-  
+
   # resources :users do
   #   resources :workdays
   # end

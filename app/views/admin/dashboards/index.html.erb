@@ -1,5 +1,10 @@
 <!-- Admin Dashboard index.html.erb -->
 <p id="notice"><%= notice %></p>
+
+<p>Account: <%= current_user.account.name %></p>
+<p>Time Zone: <%= current_user.account.time_zone %></p>
+<p>Time Now: <%= Time.zone.now %></p>
+
 <h1>Projects</h1>
 
 
