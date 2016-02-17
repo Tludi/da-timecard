@@ -1,6 +1,10 @@
 <h1>Account</h1>
 <h3><%= @account.name %></h3>
 <h4><%= @account.time_zone %></h4>
+<p><%= Time.now %></p>
+<p><%= Time.zone.now %></p>
+<p><%= Time.zone %></p>
+<p><%= @account.created_at %></p>
 
 <h3>Account Users</h3>
 <table class="table table-striped">
