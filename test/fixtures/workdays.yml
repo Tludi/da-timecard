@@ -6,6 +6,7 @@ one:
   dayDate: 2015-12-29
   project: project1
   notes: MyText
+  id: 1
 
 two:
   hoursWorked: 8.00
@@ -13,3 +14,4 @@ two:
   dayDate: 2015-12-29
   project: project2
   notes: MyText
+  id: 2

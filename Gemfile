@@ -54,7 +54,8 @@ gem 'sorcery'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem "guard", ">= 2.2.2", :require => false
+  gem "guard", ">= 2.2.2"
+  gem "guard-minitest"
 end
 
 group :development do
@@ -67,7 +68,6 @@ group :development do
   gem 'spring'
 
 
-  gem "guard-minitest", :require => false
   gem "rb-fsevent", :require => false
   gem "terminal-notifier-guard", :require => false
 end
