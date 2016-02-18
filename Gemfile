@@ -54,6 +54,7 @@ gem 'sorcery'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem "guard", ">= 2.2.2", :require => false
 end
 
 group :development do
@@ -64,5 +65,21 @@ group :development do
   gem "binding_of_caller"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+
+  gem "guard-minitest", :require => false
+  gem "rb-fsevent", :require => false
+  gem "terminal-notifier-guard", :require => false
 end
 
+group :test do
+  gem "capybara"
+  gem "connection_pool"
+  gem "launchy"
+  gem "minitest-reporters"
+  gem "mocha"
+  gem "poltergeist"
+  gem "shoulda-context"
+  gem "shoulda-matchers", ">= 3.0.1"
+  gem "test_after_commit"
+end

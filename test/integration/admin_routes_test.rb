@@ -2,7 +2,7 @@
 require 'test_helper'
 
 class Admin::UsersControllerTest < ActionController::TestCase
-  test "Does this work?" do
-    get :index
-  end
+  # test "Does this work?" do
+  #   get :index
+  # end
 end

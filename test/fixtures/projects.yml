@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  account_id: 1
+project1:
+  name: ProjectOne
+  id: 1
+  # account: account1
 
-two:
-  name: MyString
-  account_id: 1
+project2:
+  name: ProjectTwo
+  id: 2
+  # account: account2
