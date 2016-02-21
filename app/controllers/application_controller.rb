@@ -9,4 +9,9 @@ class ApplicationController < ActionController::Base
     current_user.role == "Admin"
   end
 
+  private
+    def not_authenticated
+      redirect_to login_path, alert: "Please login first"
+    end
+
 end

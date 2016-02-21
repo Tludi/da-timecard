@@ -32,6 +32,7 @@ class UsersSessionTest < ActionDispatch::IntegrationTest
 
     assert page.has_content?("Hours Worked Today")
     assert_equal "/workdays/#{@workday.id}", current_path, msg = "path does not match"
+
   end
 
   test "log in user with role of Admin" do

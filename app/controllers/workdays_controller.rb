@@ -24,7 +24,7 @@ class WorkdaysController < ApplicationController
     @timePunchStatus = @latestTimePunch.clockedInStatus if @latestTimePunch
     @currentWorkdayTimePunches = @workday.timePunches
 
-    @current_project = Project.find(@workday.project_id)
+    @current_project = Project.find(@workday.project.id)
     @hoursWorked = Workday.calculateWorkhours(@workday).round(2)
   end
 
@@ -107,7 +107,7 @@ class WorkdaysController < ApplicationController
         end
       end
 
-      if @current_workday == nil      
+      if @current_workday == nil
         @current_workday = Workday.createCurrentWorkday(current_user)
       end
     end

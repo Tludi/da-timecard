@@ -8,24 +8,10 @@ class UsersControllerTest < ActionController::TestCase
     @user = users(:user1)
     @workday = @user.workdays.last
 
-    # login_user(user = @user, route = login_url)
-  end
-
-  test "should get workday" do
-    assert_routing workday_path(@workday), {controller: "workdays", action: "show", id: @workday.id.to_s}
-  end
-
-  test "should get workdays" do
-    assert_routing workdays_path, {controller: "workdays", action: "index"}
+    login_user(user = @user, route = login_path)
   end
 
 
-#
-#   test "should get index" do
-#     get :index
-#     assert_response :success
-#     assert_not_nil assigns(:users)
-#   end
 #
 #   test "should get new" do
 #     get :new
@@ -40,10 +26,11 @@ class UsersControllerTest < ActionController::TestCase
 #     assert_redirected_to user_path(assigns(:user))
 #   end
 #
-#   test "should show user" do
-#     get :show, id: @user
-#     assert_response :success
-#   end
+
+
+  # test "should show user" do
+  #   get :show, id: @user
+  # end
 #
 #   test "should get edit" do
 #     get :edit, id: @user
