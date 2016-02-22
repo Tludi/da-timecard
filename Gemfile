@@ -55,6 +55,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'guard', '>= 2.2.2'
+  gem 'guard-rspec', require: false
   # gem 'guard-minitest'
   gem "rspec-rails", "~> 3.1.0"
   gem "factory_girl_rails", "~> 4.0"
@@ -86,4 +87,3 @@ group :test do
   # gem "shoulda-matchers", ">= 3.0.1"
   # gem "test_after_commit"
 end
- 
