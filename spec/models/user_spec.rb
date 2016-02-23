@@ -6,6 +6,7 @@ describe User do
     expect(build(:user)).to be_valid
   end
 
+  # following test is redundant to testing factory - Just more expressive
   it "is valid with a firstName, lastName, email, pin, role, and password" do
     user = User.new(
       firstName: "Milo",
@@ -71,5 +72,10 @@ describe User do
   it "returns user's full name as a string" do
     user = build(:user, firstName: "Milo", lastName: "Bloom")
     expect(user.fullName).to eq 'Milo Bloom'
+  end
+
+  it "belongs to an account" do
+    user = build(:user)
+    expect(user.account).to_not eq nil
   end
 end

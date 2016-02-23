@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :workday do
-    association :user
-    hoursWorked 8  
-    dayDate "Feb 22, 2016" 
-    notes "Need more chocolate"
+    user
+    hoursWorked 8.0
+    dayDate { Faker::Date.backward(1) }
+    notes { Faker::Lorem.sentence }
   end
 end
