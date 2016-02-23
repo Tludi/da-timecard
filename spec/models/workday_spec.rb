@@ -26,5 +26,11 @@ describe Workday do
     expect(workday.errors[:dayDate]).to include("can't be blank")
   end
 
+  it "is invalid without hours worked" do
+    workday = build(:workday, hoursWorked: nil)
+    workday.valid?
+    expect(workday.errors[:hoursWorked]).to include("can't be blank")
+  end
+
   it "has todays local date when creating a new workday"
 end

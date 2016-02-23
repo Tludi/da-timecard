@@ -6,8 +6,8 @@ class Workday < ActiveRecord::Base
 
   accepts_nested_attributes_for :timePunches
 
-  validates_presence_of :dayDate
-  
+  validates_presence_of :dayDate, :hoursWorked
+
   def self.calculateWorkhours(workday)
     # get current workday punches and push times to array
     @punches = []
