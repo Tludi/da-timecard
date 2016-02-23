@@ -6,6 +6,15 @@ describe Workday do
     expect(build(:workday)).to be_valid
   end
 
+  it "is valid with a dayDate, hoursWorked, notes" do
+    workday = Workday.new(
+      hoursWorked: 0.0,
+      dayDate: Date.today,
+      notes: "Note for today"
+    )
+    expect(workday).to be_valid
+  end
+
   it "belongs to a user" do
     workday = build(:workday)
     expect(workday.user).to_not eq nil
