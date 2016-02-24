@@ -7,12 +7,15 @@ class TimePunchesController < ApplicationController
 
 
   def create
-    if @workday.timePunches.count == 0
-      @currentStatus = false
-    else
-      @lastTimePunch = @workday.timePunches.last
-      @currentStatus = @lastTimePunch.clockedInStatus
-    end
+    # @currentTimePunch = @workday.getLastTimePunch
+    @currentStatus = @workday.getCurrentStatus
+
+    # if @workday.timePunches.count == 0
+    #   @currentStatus = false
+    # else
+    #   @lastTimePunch = @workday.timePunches.last
+    #   @currentStatus = @lastTimePunch.clockedInStatus
+    # end
 
     @mytime = Time.now.utc
     

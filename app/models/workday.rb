@@ -8,6 +8,19 @@ class Workday < ActiveRecord::Base
 
   validates_presence_of :dayDate, :hoursWorked
 
+  def getLastTimePunch
+    timePunches.last
+  end
+
+  def getCurrentStatus
+    currentTimePunch = getLastTimePunch
+    if currentTimePunch == nil
+      false
+    else
+      currentTimePunch.clockedInStatus
+    end
+  end
+
   def self.calculateWorkhours(workday)
     # get current workday punches and push times to array
     @punches = []

@@ -9,6 +9,10 @@ RSpec.describe TimePunch, :type => :model do
     expect(timePunch).to be_valid
   end
 
+  it "is invalid when clockedInStatus is nil"
+
+  it "is invalid when entry is nil"
+  
   it "alternates clockedInStatus for sequential timePunches" do
     initialStatus = false
     initialTimePunch = create(:time_punch, clockedInStatus: !initialStatus)
