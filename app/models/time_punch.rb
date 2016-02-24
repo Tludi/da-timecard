@@ -3,7 +3,7 @@ class TimePunch < ActiveRecord::Base
 
   validates_presence_of :clockedInStatus, :entry
 
-  def invertStatus(currentStatus)
+  def invertStatus
     !currentStatus
   end
   

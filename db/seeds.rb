@@ -1,5 +1,5 @@
 # database seed file for creating sample users each with 5 workdays
-
+Account.create(name: "Test Account", time_zone: "Eastern Time (US & Canada)")
 
 # Create 5 users
 @firstNames = Array["John", "Jose", "Amy", "Pat", "Bill"]
@@ -12,7 +12,8 @@
               role: "Crew",
               password: "password",
               password_confirmation: "password",
-              pin: 1234 )
+              pin: 1234,
+              account_id: 1 )
 end
 
 User.create(firstName: "milo",
@@ -21,7 +22,8 @@ User.create(firstName: "milo",
             role: "Supervisor",
             password: "password",
             password_confirmation: "password",
-            pin: 1234 )
+            pin: 1234,
+            account_id: 1 )
 
 User.create(firstName: "admin",
             lastName: "admin",
@@ -29,7 +31,8 @@ User.create(firstName: "admin",
             role: "Admin",
             password: "password",
             password_confirmation: "password",
-            pin: 1234 )
+            pin: 1234,
+            account_id: 1 )
 
 users = User.all
 # print User count to terminal for verification

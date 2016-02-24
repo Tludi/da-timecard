@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :account do
     name { Faker::Company.name }
-    # time_zone { Faker::Address.time_zone }
+    time_zone { Faker::Address.time_zone }
     # addressStreet { Faker::Address.street_address }
     # addressCity { Faker::Address.city }
     # addressState { Faker::Address.state }

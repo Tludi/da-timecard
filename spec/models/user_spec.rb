@@ -50,7 +50,7 @@ describe User do
     expect(user.errors[:pin]).to include("can't be blank")
   end
 
-  it "is invalid without a role number" do
+  it "is invalid without a role" do
     user = User.new(role: nil)
     user.valid?
     expect(user.errors[:role]).to include("can't be blank")
