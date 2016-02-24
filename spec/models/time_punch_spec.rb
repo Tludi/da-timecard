@@ -9,18 +9,16 @@ RSpec.describe TimePunch, :type => :model do
     expect(timePunch).to be_valid
   end
 
-  it "is invalid when clockedInStatus is nil"
-
-  it "is invalid when entry is nil"
-  
-  it "alternates clockedInStatus for sequential timePunches" do
-    initialStatus = false
-    initialTimePunch = create(:time_punch, clockedInStatus: !initialStatus)
-    currentStatus = initialTimePunch.clockedInStatus
-    # calls invertStatus method in timePunch model
-    # invertedCurrentStatus = initialTimePunch.invertStatus(currentStatus)
-    # secondTimePunch = build(:time_punch, clockedInStatus: invertedCurrentStatus)
-    secondTimePunch = build(:time_punch, clockedInStatus: !currentStatus)
-    expect(secondTimePunch.clockedInStatus).to eq false
+  it "is invalid when clockedInStatus is nil" do
+    timePunch = build(:time_punch, clockedInStatus: nil)
+    timePunch.valid?
+    expect(timePunch.errors[:clockedInStatus]).to include("can't be blank")
   end
+
+  it "is invalid when entry is nil" do
+    timePunch = build(:time_punch, entry: nil)
+    timePunch.valid?
+    expect(timePunch.errors[:entry]).to include("can't be blank")
+  end
+
 end
