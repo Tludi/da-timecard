@@ -10,5 +10,9 @@ FactoryGirl.define do
     # companyPhone { Faker::PhoneNumber.phone_number } #=> "397.693.1309"
     # companyContact { Faker::Superhero.name }
     # companyWebsite { Faker::Internet.url }
+
+    factory :invalid_account do
+      name nil
+    end
   end
 end
