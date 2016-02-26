@@ -16,6 +16,9 @@ RSpec.describe Admin::AccountsController, :type => :controller do
       accounts = [admin.account]
       accounts << create(:account)
       get :index
+      # tests admin account and new account exists
+      expect(assigns(:accounts).count).to eq 2
+      # tests index @accounts == admin account and new account (accounts array)
       expect(assigns(:accounts)).to match_array accounts
     end
 
