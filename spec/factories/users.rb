@@ -9,5 +9,15 @@ FactoryGirl.define do
     password_confirmation "password"
     account
     # project
+
+    factory :admin do
+      role "Admin"
+    end
+
+    factory :crew do
+      role "Crew"
+    end
+
   end
+
 end
