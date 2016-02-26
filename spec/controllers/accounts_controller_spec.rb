@@ -39,17 +39,29 @@ RSpec.describe Admin::AccountsController, :type => :controller do
   end
 
   describe "GET #new" do
-    it "assigns a new account to @account"
+    it "renders the new template" do
+      get :new
+      expect(response).to render_template :new
+    end
 
-    it "renders the new template"
-
+    it "assigns a new account to @account" do
+      get :new
+      expect(assigns(:account)).to be_a_new(Account)
+    end
   end
 
   describe "GET #edit" do
-    it "assigns the requested account to @account"
+    it "renders the edit template" do
+      account = create(:account)
+      get :edit, id: account
+      expect(response).to render_template :edit
+    end
 
-    it "renders the edit template"
-
+    it "assigns the requested account to @account" do
+      account = create(:account)
+      get :edit, id: account
+      expect(assigns(:account)).to eq account
+    end
   end
 
   describe "POST #create" do

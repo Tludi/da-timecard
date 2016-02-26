@@ -1,6 +1,6 @@
 # admin account_controller.rb
 class Admin::AccountsController < Admin::AdminController
-  before_action :set_account, only: [:show, :destroy]
+  before_action :set_account, only: [:show, :edit, :destroy]
 
   def index
     @accounts = Account.all
@@ -16,6 +16,13 @@ class Admin::AccountsController < Admin::AdminController
     @account = Account.new
     @account.users.build
   end
+
+  def edit
+  end
+
+  def update
+  end
+
 
   def create
     @account = Account.new(account_params)
