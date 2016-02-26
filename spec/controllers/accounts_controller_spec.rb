@@ -5,6 +5,7 @@ RSpec.describe Admin::AccountsController, :type => :controller do
   before :each do
     @admin = create(:admin)
     login_user(user = @admin, route = login_path)
+    @account = @admin.account
   end
 
   describe "GET #index" do
@@ -26,15 +27,13 @@ RSpec.describe Admin::AccountsController, :type => :controller do
 
   describe "GET #show" do
     it "renders the show template" do
-      account = create(:account)
-      get :show, id: account
+      get :show, id: @account
       expect(response).to render_template :show
     end
 
     it "assigns the requested account to @account" do
-      account = create(:account)
-      get :show, id: account
-      expect(assigns(:account)).to eq account
+      get :show, id: @account
+      expect(assigns(:account)).to eq @account
     end
   end
 
@@ -52,23 +51,26 @@ RSpec.describe Admin::AccountsController, :type => :controller do
 
   describe "GET #edit" do
     it "renders the edit template" do
-      account = create(:account)
-      get :edit, id: account
+      get :edit, id: @account
       expect(response).to render_template :edit
     end
 
     it "assigns the requested account to @account" do
-      account = create(:account)
-      get :edit, id: account
-      expect(assigns(:account)).to eq account
+      get :edit, id: @account
+      expect(assigns(:account)).to eq @account
     end
   end
 
   describe "POST #create" do
     context "with valid attributes" do
-      it "saves the new account in the database"
+      it "saves the new account in the database" do
+        expect{ post :create, account: attributes_for(:account)}.to change(Account, :count).by(1)
+      end
 
-      it "redirects to the account#show page"
+      it "redirects to the admin_account#index page" do
+        post :create, account: attributes_for(:account)
+        expect(response).to redirect_to admin_accounts_path
+      end
 
     end
 

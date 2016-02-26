@@ -23,15 +23,14 @@ class Admin::AccountsController < Admin::AdminController
   def update
   end
 
-
   def create
     @account = Account.new(account_params)
-    @account.users.first.role = "Admin"
+    # @account.users.first.role = "Admin"
     respond_to do |format|
       if @account.save
-        format.html{ redirect_to accounts_path, notice: 'Account created.' }
+        format.html{ redirect_to admin_accounts_path, notice: 'Account created.' }
       else
-        format.html {redirect_to accounts_path, notice: 'Account Not Created.'}
+        format.html {redirect_to admin_accounts_path, notice: 'Account Not Created.'}
       end
     end
   end
