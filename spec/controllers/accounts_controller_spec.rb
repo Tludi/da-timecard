@@ -3,9 +3,22 @@ require 'rails_helper'
 RSpec.describe Admin::AccountsController, :type => :controller do
 
   describe "GET #index" do
-    it "gets all of the accounts"
+    it "renders the index template" do
+      admin = create(:user, role: "Admin")
+      login_user(user = admin, route = login_path)
+      get :index
+      expect(response).to render_template :index
+    end
 
-    it "renders the index template"
+    it "gets all of the accounts" do
+      admin = create(:user, role: "Admin")
+      login_user(user = admin, route = login_path)
+      accounts = [admin.account]
+      accounts << create(:account)
+      get :index
+      expect(assigns(:accounts)).to match_array accounts
+    end
+
   end
 
   describe "GET #show" do

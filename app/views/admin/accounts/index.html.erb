@@ -8,13 +8,13 @@
     <th></th>
   </tr>
 
-  <% @accounts.each do |account %>
+  <% @accounts.each do |account| %>
     <tr>
       <td><%= account.name %></td>
       <td><%= account.users.first.firstName %></td>
       <td><%= account.users.first.email %></td>
       <td><%= account.time_zone %></td>
-      <td><%= link_to 'Show', admin_account %></td>
-      
+
     </tr>
+  <% end %>
 </table>

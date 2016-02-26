@@ -34,7 +34,10 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   # simplify calls to factories
-  config.include FactoryGirl::Syntax::Methods 
+  config.include FactoryGirl::Syntax::Methods
+  config.include Sorcery::TestHelpers::Rails
+  config.include Sorcery::TestHelpers::Rails::Controller, type: :controller
+  config.include Sorcery::TestHelpers::Rails::Integration, type: :feature
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
