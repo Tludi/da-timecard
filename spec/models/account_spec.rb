@@ -9,6 +9,12 @@ RSpec.describe Account, :type => :model do
     expect(account).to be_valid
   end
 
+  it "invalid without a name" do
+    account = build(:invalid_account)
+    account.valid?
+    expect(account.errors[:name]).to include("can't be blank")
+  end
+
   it "has a valid time_zone" do
     account = create(:account)
     account.valid?

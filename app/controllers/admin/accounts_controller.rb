@@ -30,7 +30,7 @@ class Admin::AccountsController < Admin::AdminController
       if @account.save
         format.html{ redirect_to admin_accounts_path, notice: 'Account created.' }
       else
-        format.html {redirect_to admin_accounts_path, notice: 'Account Not Created.'}
+        format.html {render :new, notice: 'Account Not Created.'}
       end
     end
   end

@@ -75,9 +75,14 @@ RSpec.describe Admin::AccountsController, :type => :controller do
     end
 
     context "with invalid attributes" do
-      it "does not save the new account in the database"
+      it "does not save the new account in the database" do
+       expect{ post :create, account: attributes_for(:invalid_account)}.not_to change(Account, :count)
+      end
 
-      it "re-renders the new template"
+      it "re-renders the new template" do
+        post :create, account: attributes_for(:invalid_account)
+        expect(response).to render_template :new
+      end
 
     end
 
