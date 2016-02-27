@@ -1,6 +1,6 @@
 # admin account_controller.rb
 class Admin::AccountsController < Admin::AdminController
-  before_action :set_account, only: [:show, :edit, :destroy]
+  before_action :set_account, only: [:show, :edit, :update, :destroy]
 
   def index
     @accounts = Account.all
@@ -21,6 +21,15 @@ class Admin::AccountsController < Admin::AdminController
   end
 
   def update
+    respond_to do |format|
+      if @account.update(account_params)
+        format.html { redirect_to @account, notice: 'Account was successfully updated.' }
+        format.json { render :show, status: :ok, location: admin_account_path(@account) }
+      else
+        format.html { render :edit }
+        format.json { render json: @account.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def create

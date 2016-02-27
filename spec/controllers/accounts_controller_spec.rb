@@ -90,9 +90,22 @@ RSpec.describe Admin::AccountsController, :type => :controller do
 
   describe "PATCH #update" do
     context "with valid attributes" do
-      it "upates the account in the database"
+      it "upates the account in the database" do
+        patch :update, id: @account, account: attributes_for(:account)
+        expect(assigns(:account)).to eq @account
+      end
 
-      it "redirects to the account"
+      it "changes accounts attributes" do
+        patch :update, id: @account, account: attributes_for(:account, name: 'Seahawks')
+        @account.reload
+        expect(@account.name).to eq 'Seahawks'
+      end
+
+      it "redirects to the account" do
+        patch :update, id: @account, account: attributes_for(:account, name: 'Seahawks')
+        @account.reload
+        expect(response).to render_template :show
+      end
 
     end
 
