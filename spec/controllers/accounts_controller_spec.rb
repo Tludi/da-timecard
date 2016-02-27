@@ -90,7 +90,7 @@ RSpec.describe Admin::AccountsController, :type => :controller do
 
   describe "PATCH #update" do
     context "with valid attributes" do
-      it "upates the account in the database" do
+      it "locates the requested account in the database" do
         patch :update, id: @account, account: attributes_for(:account)
         expect(assigns(:account)).to eq @account
       end
@@ -101,7 +101,7 @@ RSpec.describe Admin::AccountsController, :type => :controller do
         expect(@account.name).to eq 'Seahawks'
       end
 
-      it "redirects to the account" do
+      it "redirects to the account index when successful update" do
         patch :update, id: @account, account: attributes_for(:account, name: 'Seahawks')
         @account.reload
         expect(response).to redirect_to admin_accounts_path
@@ -110,10 +110,17 @@ RSpec.describe Admin::AccountsController, :type => :controller do
     end
 
     context "with invalid attributes" do
-      it "does not update the account"
+      it "does not update the account" do
+        patch :update, id: @account, account: attributes_for(:invalid_account)
+        @account.reload
+        expect(@account.name).to_not eq 'Seahawks'
+      end
 
-      it "re-renders the edit template"
-
+      it "re-renders the edit template" do
+        patch :update, id: @account, account: attributes_for(:invalid_account)
+        @account.reload
+        expect(response).to render_template :edit
+      end
     end
 
   end
