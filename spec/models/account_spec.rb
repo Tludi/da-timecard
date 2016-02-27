@@ -15,8 +15,10 @@ RSpec.describe Account, :type => :model do
     expect(account.errors[:name]).to include("can't be blank")
   end
 
-  it "has a valid time_zone" do
-    account = create(:account)
+  it "invalid without a time_zone" do
+    account = build(:account, time_zone: nil)
     account.valid?
+    expect(account.errors[:time_zone]).to include("can't be blank")
   end
+
 end

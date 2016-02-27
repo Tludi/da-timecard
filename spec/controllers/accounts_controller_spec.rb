@@ -111,7 +111,9 @@ RSpec.describe Admin::AccountsController, :type => :controller do
 
     context "with invalid attributes" do
       it "does not update the account" do
-        patch :update, id: @account, account: attributes_for(:invalid_account)
+        patch :update, id: @account, account: attributes_for(:account, 
+                                                             name: 'Seahawks',
+                                                             time_zone: nil)
         @account.reload
         expect(@account.name).to_not eq 'Seahawks'
       end
@@ -126,9 +128,13 @@ RSpec.describe Admin::AccountsController, :type => :controller do
   end
 
   describe "when DELETE #destroy" do
-    it "deletes the account from the database"
+    it "deletes the account from the database" do
+      expect{ delete :destroy, id: @account}.to change(Account, :count).by(-1)
+    end
 
-    it "redirects to the account#index"
-
+    it "redirects to the account#index" do
+      delete :destroy, id: @account
+      expect(response).to redirect_to admin_accounts_path
+    end
   end
 end
