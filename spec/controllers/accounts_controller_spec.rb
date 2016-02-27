@@ -104,7 +104,7 @@ RSpec.describe Admin::AccountsController, :type => :controller do
       it "redirects to the account" do
         patch :update, id: @account, account: attributes_for(:account, name: 'Seahawks')
         @account.reload
-        expect(response).to render_template :show
+        expect(response).to redirect_to admin_accounts_path
       end
 
     end
