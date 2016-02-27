@@ -67,6 +67,10 @@ RSpec.describe Admin::AccountsController, :type => :controller do
         expect{ post :create, account: attributes_for(:account)}.to change(Account, :count).by(1)
       end
 
+      it "creates a user with the role Admin on creation" do
+        expect{ post :create, account: attributes_for(:account)}.to change(User, :count).by(1)
+      end
+
       it "redirects to the admin_account#index page" do
         post :create, account: attributes_for(:account)
         expect(response).to redirect_to admin_accounts_path
@@ -111,7 +115,7 @@ RSpec.describe Admin::AccountsController, :type => :controller do
 
     context "with invalid attributes" do
       it "does not update the account" do
-        patch :update, id: @account, account: attributes_for(:account, 
+        patch :update, id: @account, account: attributes_for(:account,
                                                              name: 'Seahawks',
                                                              time_zone: nil)
         @account.reload
