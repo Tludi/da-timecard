@@ -5,69 +5,126 @@
 <p>Time Zone: <%= current_user.account.time_zone %></p>
 <p>Time Now: <%= Time.zone.now %></p>
 
-<h1>Projects</h1>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Project Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="wrapper wrapper-content">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>Projects <span class="badge"> <%= @projects.count %></span></h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#">Config option 1</a>
+                        </li>
+                        <li><a href="#">Config option 2</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ibox-content">
+              <div>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Project Name</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
 
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td><%= link_to 'Show', admin_project_path(project) %></td>
-        <td><%= link_to 'Edit', edit_admin_project_path(project) %></td>
-        <td><%= link_to 'Delete', admin_projects_path(project), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
+                  <tbody>
+                    <% @projects.each do |project| %>
+                      <tr>
+                        <td><%= link_to project.name, admin_project_path(project) %></td>
+                        <td><%= link_to edit_admin_project_path(project) do %>
+                          <span class="fa fa-edit"></span>
+                          <% end %>
+                        </td>
+                        <td><%= link_to admin_projects_path(project), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                          <span class="fa fa-trash"></span>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+                <br>
 
-<%= link_to 'New Project', new_admin_project_path, :class => "btn btn-primary" %>
+                <%= link_to 'New Project', new_admin_project_path, :class => "btn btn-primary" %>
 
-<hr>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<h1>Users</h1>
+        <div class="col-lg-8">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>Users <span class="badge"> <%= @users.count %></span></h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="glyphicon glyphicon-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="glyphicon glyphicon-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#">Config option 1</a>
+                        </li>
+                        <li><a href="#">Config option 2</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ibox-content">
+              <div>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Email</th>
-      <th>Role</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+                  <tbody>
+                    <% @users.each do |user| %>
+                      <tr>
+                        <td><%= link_to user.fullName, user %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.role %></td>
+                        <td><%= link_to edit_admin_user_path(user) do %>
+                          <span class="glyphicon glyphicon-edit"></span>
+                          <% end %>
+                        </td>
+                        <td><%= link_to admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                          <span class="glyphicon glyphicon-trash"></span>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.firstName %></td>
-        <td><%= user.lastName %></td>
-        <td><%= user.email %></td>
-        <td><%= user.role %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
-        <td><%= link_to 'Delete', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                <br>
 
-<br>
+                <%= link_to 'New User', new_admin_user_path, :class => "btn btn-primary" %>
 
-<%= link_to 'New User', new_admin_user_path, :class => "btn btn-primary" %>
-
-<hr>
-
-<hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
