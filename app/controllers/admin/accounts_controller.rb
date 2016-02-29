@@ -14,10 +14,23 @@ class Admin::AccountsController < Admin::AdminController
 
   def new
     @account = Account.new
-    @account.users.build
+    @user = @account.users.new
+  end
+
+  def create
+    @account = Account.new(account_params)
+    # @account.users.first.role = "Admin"
+    respond_to do |format|
+      if @account.save
+        format.html{ redirect_to admin_accounts_path, notice: 'Account created.' }
+      else
+        format.html {render :new, notice: 'Account Not Created.'}
+      end
+    end
   end
 
   def edit
+    @user = @account.users.first
   end
 
   def update
@@ -32,17 +45,6 @@ class Admin::AccountsController < Admin::AdminController
     end
   end
 
-  def create
-    @account = Account.new(account_params)
-    # @account.users.first.role = "Admin"
-    respond_to do |format|
-      if @account.save
-        format.html{ redirect_to admin_accounts_path, notice: 'Account created.' }
-      else
-        format.html {render :new, notice: 'Account Not Created.'}
-      end
-    end
-  end
 
   def destroy
     @account.destroy

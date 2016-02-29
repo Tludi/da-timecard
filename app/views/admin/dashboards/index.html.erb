@@ -71,10 +71,10 @@
               <h5>Users <span class="badge"> <%= @users.count %></span></h5>
                 <div class="ibox-tools">
                     <a class="collapse-link">
-                        <i class="glyphicon glyphicon-chevron-up"></i>
+                        <i class="fa fa-chevron-up"></i>
                     </a>
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="glyphicon glyphicon-wrench"></i>
+                        <i class="fa fa-wrench"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#">Config option 1</a>
@@ -104,11 +104,11 @@
                         <td><%= user.email %></td>
                         <td><%= user.role %></td>
                         <td><%= link_to edit_admin_user_path(user) do %>
-                          <span class="glyphicon glyphicon-edit"></span>
+                          <span class="fa fa-edit"></span>
                           <% end %>
                         </td>
                         <td><%= link_to admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                          <span class="glyphicon glyphicon-trash"></span>
+                          <span class="fa fa-trash"></span>
                           <% end %>
                         </td>
                       </tr>

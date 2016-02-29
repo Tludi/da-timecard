@@ -1,20 +1,60 @@
-<table class="table table-striped">
-  <tr>
-    <th>Account Name:</th>
-    <th>Admin Name:</th>
-    <th>Admin Email:</th>
-    <th>Time Zone:</th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="wrapper wrapper-content">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>Accounts <span class="badge"> <%= @accounts.count %></span></h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#">Config option 1</a>
+                        </li>
+                        <li><a href="#">Config option 2</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ibox-content">
+              <div>
+                <table class="table table-striped">
+                  <tr>
+                    <th>Account Name:</th>
+                    <th>Time Zone:</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
 
-  <% @accounts.each do |account| %>
-    <tr>
-      <td><%= account.name %></td>
-      <td><%= account.users.first.firstName %></td>
-      <td><%= account.users.first.email %></td>
-      <td><%= account.time_zone %></td>
+                  <% @accounts.each do |account| %>
+                    <tr>
+                      <td><%= account.name %></td>
 
-    </tr>
-  <% end %>
-</table>
+                      <td><%= account.time_zone %></td>
+                      <td><%= link_to edit_admin_account_path(account) do %>
+                        <span class="glyphicon glyphicon-edit"></span>
+                        <% end %>
+                      </td>
+                      <td><%= link_to admin_account_path(account), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </table>
+                <br>
+                <%= link_to 'New Account', new_admin_account_path, :class => "btn btn-primary" %>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

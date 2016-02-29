@@ -23,7 +23,7 @@
                 <span class="label label-success pull-right"><%= Date.today.strftime('%B %e, %Y') %></span>
                 <span><strong>
   <%= current_user.firstName + " " + current_user.lastName %></strong></span>
-                <h5>Workday</h5>
+                <h5><Workday<span><%= @workday.currentTimeZone %></span></h5>
             </div>
             <div class="ibox-content">
               <p>
@@ -42,7 +42,7 @@
                 <strong>Notes:</strong>
                 <%= @workday.notes %>
               </p>
-              
+
 
               <p>
                 <strong>dayDate:</strong>
@@ -67,7 +67,7 @@
     <div class="col-md-12 center">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <span class="label label-success pull-right">Daily</span>
+                <span class="label label-success pull-right"><%= Time.zone.now.strftime('%l:%M %P') %></span>
                 <h5>Time Clock</h5>
             </div>
             <div class="ibox-content">
@@ -90,9 +90,8 @@
             <div class="ibox-content">
               <div class="row">
               <% @currentWorkdayTimePunches.each do |tp| %>
-                <div class="col-md-2" >
+                <div class="col-md-6" >
                   <div class="well">
-                    <%= Time.now %>
                     <%= local_time(tp.created_at, '%l:%M %P') %>
                     <% if tp.clockedInStatus %>
                       <p>In</p>
