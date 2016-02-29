@@ -18,14 +18,16 @@ class WorkdaysController < ApplicationController
   # GET /workdays/1
   # GET /workdays/1.json
   def show
-    @timePunch = TimePunch.new
+    @currentTime = get_currentTime
 
+    @timePunch = TimePunch.new
     @latestTimePunch = @workday.timePunches.last
     @timePunchStatus = @latestTimePunch.clockedInStatus if @latestTimePunch
     @currentWorkdayTimePunches = @workday.timePunches
 
     @current_project = Project.find(@workday.project.id)
     @hoursWorked = Workday.calculateWorkhours(@workday).round(2)
+    @hoursSaved = @workday.hoursWorked
   end
 
   # GET /workdays/new
@@ -67,8 +69,6 @@ class WorkdaysController < ApplicationController
   # PATCH/PUT /workdays/1
   # PATCH/PUT /workdays/1.json
   def update
-    # @mytime = Time.now.utc
-    # @workday.timePunches.build(:entry => @mytime.localtime, :clockedInStatus => !@currentStatus )
     respond_to do |format|
       if @workday.update(workday_params)
         format.html { redirect_to @workday, notice: 'Workday was successfully updated.' }
@@ -78,7 +78,6 @@ class WorkdaysController < ApplicationController
         format.json { render json: @workday.errors, status: :unprocessable_entity }
       end
     end
-    # @timePunch = @workday.timePunches.build(timePunch_params)
   end
 
   # DELETE /workdays/1
@@ -102,7 +101,7 @@ class WorkdaysController < ApplicationController
       @userWorkdays = current_user.workdays
       @current_workday = nil
       @userWorkdays.each do |wd|
-        if wd.dayDate == DateTime.now.to_date
+        if wd.dayDate == Time.zone.today
           @current_workday = wd
         end
       end
@@ -116,7 +115,7 @@ class WorkdaysController < ApplicationController
     def get_timePunches
       @userWorkdays = current_user.workdays
       @userWorkdays.each do |wd|
-      if wd.dayDate == DateTime.now.to_date
+      if wd.dayDate == Time.zone.today
         @currentUserWorkDay = wd
         @timePunches = @currentUserWorkDay.timePunches
       end
@@ -126,6 +125,10 @@ class WorkdaysController < ApplicationController
 
     def set_user
       @current_user = current_user
+    end
+
+    def get_currentTime
+      Time.zone.today
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

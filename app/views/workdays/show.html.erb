@@ -1,34 +1,21 @@
-<!-- <p id="notice"><%= notice %></p> -->
-<!-- <p>Time.now: <%= Time.now.strftime("%l:%M %P") %></p>
-<p>Time.now.utc: <%= Time.now.utc.strftime("%l:%M %P") %></p>
-<p>created at: <%= @workday.created_at.strftime('%B %e, %Y %l:%M%P') %></p>
-<p>Local time created_at <%= local_time(@workday.created_at, '%B %e, %Y %l:%M%P')%></p>
-<p>Local_time helper Time.now: <%= local_time(Time.now) %></p>
-<p>Local_date helper Time.now: <%= local_date(Time.now) %></p>
-<p>Date.today: <%= Date.today %></p>
-<p>DateTime.now: <%= DateTime.now %></p>
-<p>DateTime.now.utc: <%= DateTime.now.utc %></p>
-<p>DateTime.now.to_date: <%= DateTime.now.to_date %></p>
-<p>DateTime.now.in_time_zone.midnight: <%= DateTime.now.in_time_zone.midnight %>
-</p>
-<p>local_time zone.midnight: <%= local_time(DateTime.now.in_time_zone.midnight) %></p>
-<p>beginning of day: <%= DateTime.now.beginning_of_day %></p>
-<p>hours from now: <%= DateTime.now + 12.hours %></p>
-<hr> -->
+<p id="notice"><%= notice %></p>
 
 <div class="row">
     <div class="col-md-12 center">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <span class="label label-success pull-right"><%= Date.today.strftime('%B %e, %Y') %></span>
-                <span><strong>
-  <%= current_user.firstName + " " + current_user.lastName %></strong></span>
-                <h5><Workday<span><%= @workday.currentTimeZone %></span></h5>
+                <span class="label label-success pull-right"><%= Time.zone.today.strftime('%B %e, %Y') %></span>
+                <span><strong><%= current_user.fullName %></strong></span>
+                <h5><Workday<span><%= @currentTime %></span></h5>
             </div>
             <div class="ibox-content">
               <p>
                 <strong>Hours Worked Today:</strong>
                 <%= @hoursWorked %>
+              </p>
+              <p>
+                <strong>Hours Saved:</strong>
+                <%= @hoursSaved %>
               </p>
               <p>
                 <strong>dayDate:</strong>
@@ -94,9 +81,9 @@
                   <div class="well">
                     <%= local_time(tp.created_at, '%l:%M %P') %>
                     <% if tp.clockedInStatus %>
-                      <p>In</p>
+                      <p>In: <%= tp.clockedInStatus %></p>
                     <% else %>
-                      <p>Out</p>
+                      <p>Out: <%= tp.clockedInStatus %></p>
                     <% end %>
                     <%= link_to 'Destroy', tp, method: :delete, data: { confirm: 'Are you sure?' } %>
                   </div>

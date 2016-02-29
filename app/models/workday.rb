@@ -44,14 +44,17 @@ class Workday < ActiveRecord::Base
     # convert the fractional of hours worked from hour percentage to minutes
     workHourModulus = @workHours.modulo(1)*0.6.round(2)
     workHourWholeNumber = @workHours.round(0)
-    return workHourWholeNumber + workHourModulus
+    workdayHours = workHourWholeNumber + workHourModulus
+    workday.hoursWorked = workdayHours
+    workday.save
+    return workdayHours
   end
 
   def self.retrieveCurrentWorkday(user)
     wd = user.workdays.last
     # userWorkdays = user.workdays.all
     # userWorkdays.each do |wd|
-      if wd.dayDate == DateTime.now.to_date
+      if wd.dayDate == Time.zone.today
         wd
       else
         nil
@@ -60,10 +63,9 @@ class Workday < ActiveRecord::Base
   end
 
   def self.createCurrentWorkday(user)
-    workday = Workday.create(user_id: user.id, project_id: 1, dayDate: DateTime.now.to_date, hoursWorked: 0)
+    workday = Workday.create(user_id: user.id, project_id: 1, dayDate: Time.zone.today, hoursWorked: 0)
   end
 
-  def currentTimeZone
-    user.account.time_zone
-  end
+
+
 end

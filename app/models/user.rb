@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 
 
   def fullName
-    [firstName, lastName].join(' ')
+    [firstName.capitalize, lastName.capitalize].join(' ')
   end
 
 end

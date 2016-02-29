@@ -7,26 +7,27 @@ class TimePunchesController < ApplicationController
 
 
   def create
-    # @currentTimePunch = @workday.getLastTimePunch
-    @currentStatus = @workday.getCurrentStatus
+    @timePunch = @workday.timePunches.new
 
-    # if @workday.timePunches.count == 0
-    #   @currentStatus = false
-    # else
-    #   @lastTimePunch = @workday.timePunches.last
-    #   @currentStatus = @lastTimePunch.clockedInStatus
-    # end
+    if @workday.timePunches.count == 0
+      @currentStatus = true
+    else
+      @lastTimePunch = @workday.timePunches.last
+      @currentStatus = @lastTimePunch.clockedInStatus
+      # newStatus = !@currentStatus
+      # @currentStatus = true
+    end
 
-    @mytime = Time.now.utc
-    
-    @timePunch = @workday.timePunches.build(:entry => @mytime.localtime, :clockedInStatus => !@currentStatus )
+    @timePunch.entry = Time.current
+    @timePunch.clockedInStatus = @currentStatus
+    @timePunch.save
 
     respond_to do |format|
       if @workday.save
         format.html { redirect_to @workday, notice: 'clock record was successfully created.' }
         # format.json { render :show, status: :created, location: @workday }
       else
-        format.html { redirect_to @workday, notice: 'clock record was not created.' }
+        format.html { redirect_to @workday, notice: 'clock record was not created(from tp controller).' }
         # format.json { render json: @workday.errors, status: :unprocessable_entity }
       end
     end
