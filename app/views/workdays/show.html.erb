@@ -4,9 +4,9 @@
     <div class="col-md-12 center">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <span class="label label-success pull-right"><%= Time.zone.today.strftime('%B %e, %Y') %></span>
+                <span class="label label-success pull-right"><%= @currentTime %></span>
                 <span><strong><%= current_user.fullName %></strong></span>
-                <h5><Workday<span><%= @currentTime %></span></h5>
+                <h5><Workday<span><%= Time.zone %></span></h5>
             </div>
             <div class="ibox-content">
               <p>
