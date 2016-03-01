@@ -17,7 +17,7 @@ Account.create(name: "Test Account", time_zone: "Eastern Time (US & Canada)")
 end
 
 User.create(firstName: "milo",
-            lastName: "bloom", 
+            lastName: "bloom",
             email: "milo",
             role: "Supervisor",
             password: "password",
@@ -43,7 +43,7 @@ puts users.count
 users.each do |u|
   u.workdays.create(hoursWorked: 8,
                     user_id: u.id,
-                    dayDate: (DateTime.now - 1).to_date , # set each day backwards by 24 hours
+                    dayDate: Time.zone.today
                     project_id: 1,
                     notes: "Nothing yet" )
 end
