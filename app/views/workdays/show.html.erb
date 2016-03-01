@@ -77,7 +77,7 @@
             <div class="ibox-content">
               <div class="row">
               <% @currentWorkdayTimePunches.each do |tp| %>
-                <div class="col-md-6" >
+                <div class="col-md-3" >
                   <div class="well">
                     <%= local_time(tp.created_at, '%l:%M %P') %>
                     <% if tp.clockedInStatus %>

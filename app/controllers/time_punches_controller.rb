@@ -7,10 +7,10 @@ class TimePunchesController < ApplicationController
 
 
   def create
-    @timePunch = @workday.timePunches.new
+    # @timePunch = @workday.timePunches.new
 
     if @workday.timePunches.count == 0
-      @currentStatus = true
+      @currentStatus = false
     else
       @lastTimePunch = @workday.timePunches.last
       @currentStatus = @lastTimePunch.clockedInStatus
@@ -18,9 +18,10 @@ class TimePunchesController < ApplicationController
       # @currentStatus = true
     end
 
-    @timePunch.entry = Time.current
-    @timePunch.clockedInStatus = @currentStatus
-    @timePunch.save
+    # @timePunch.entry = Time.current
+    # @timePunch.clockedInStatus = !@currentStatus
+    # @timePunch.save
+    @timePunch = @workday.timePunches.build(entry: Time.current, clockedInStatus: !@currentStatus )
 
     respond_to do |format|
       if @workday.save
