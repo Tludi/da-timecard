@@ -1,5 +1,5 @@
 # database seed file for creating sample users each with 5 workdays
-Account.create(name: "Test Account", time_zone: "Eastern Time (US & Canada)")
+Account.create(name: "Test Account", time_zone: "Pacific Time (US & Canada)")
 
 # Create 5 users
 @firstNames = Array["John", "Jose", "Amy", "Pat", "Bill"]
