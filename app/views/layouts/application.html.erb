@@ -36,14 +36,6 @@
                     <i class="fa fa-reorder"></i>
             </button>
                 <%= link_to "TractWork", root_path, :class => "navbar-brand" %>
-                <!-- <a href="#" class="navbar-brand">TractWork</a> -->
-                <ul class="nav navbar-top-links navbar-right">
-                  <% if current_user %>
-                  <li><%= link_to '<i class="fa fa-sign-out"></i> Log out'.html_safe, logout_path %></li>
-                  <% else %>
-                  <li><%= link_to '<i class="fa fa-sign-in"></i> Log in'.html_safe, login_path %></li>
-                  <% end %>
-                </ul>
           </div>
           <div class="navbar-collapse collapse" id="navbar">
             <ul class="nav navbar-nav">
@@ -52,7 +44,15 @@
                 <li><%= link_to "Today", workday_path(current_user.workdays.last)  %></li>
               <% end %>
             </ul>
-          </div>
+            <ul class="nav navbar-top-links navbar-right">
+              <% if current_user %>
+                <li><%= link_to "Hello " + current_user.firstName, user_path(current_user) %></li>
+                <li><%= link_to '<i class="fa fa-sign-out"></i> Log out'.html_safe, logout_path %></li>
+              <% else %>
+                <li><%= link_to '<i class="fa fa-sign-in"></i> Log in'.html_safe, login_path %></li>
+              </div>
+              <% end %>
+            </ul>
         </nav>
       </div>
 
