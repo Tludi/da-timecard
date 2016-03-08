@@ -11,11 +11,11 @@
             <div class="ibox-content">
               <p>
                 <strong>Hours Worked Today:</strong>
-                <%= @hoursWorked %>
+                <%= Time.at(@hoursWorked.round.abs).utc.strftime("%H:%M") %>
               </p>
               <p>
                 <strong>Hours Saved:</strong>
-                <%= @hoursSaved %>
+                <%= Time.at(@hoursSaved.round.abs).utc.strftime("%H:%M") %>
               </p>
               <p>
                 <strong>dayDate:</strong>

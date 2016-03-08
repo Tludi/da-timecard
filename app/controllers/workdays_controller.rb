@@ -26,7 +26,7 @@ class WorkdaysController < ApplicationController
     @currentWorkdayTimePunches = @workday.timePunches
 
     @current_project = Project.find(@workday.project.id)
-    @hoursWorked = Workday.calculateWorkhours(@workday).round(2)
+    @hoursWorked = Workday.calculateWorkhours(@workday)
     @hoursSaved = @workday.hoursWorked
   end
 

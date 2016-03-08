@@ -31,24 +31,25 @@ class Workday < ActiveRecord::Base
 
     # group punches in pairs then push to array
     punchGroups = []
-    @punches.in_groups_of(2, Time.now) do |group| # Time.now is used when punch count is odd
+    @punches.in_groups_of(2, Time.current) do |group| # Time.current is used when punch count is odd
       punchGroups << group
     end
 
-    # Iterate throug groups of punch pairs to get time difference
+    # Iterate through groups of punch pairs to get time difference
     # and add each groups difference for a total hours worked
     @workHours = 0
     punchGroups.each do |pg|
-      @workHours += TimeDifference.between(pg[0], pg[1]).in_hours
+      # @workHours += TimeDifference.between(pg[0], pg[1]).in_hours
+      @workHours += pg[1] - pg[0]
     end
     # convert the fractional of hours worked from hour percentage to minutes
-    workHourModulus = @workHours.modulo(1)*0.6.round(2)
-    workHourWholeNumber = @workHours.round(0)
-    workdayHours = workHourWholeNumber + workHourModulus
-    workday.hoursWorked = workdayHours
+    # workHourModulus = @workHours.modulo(1)*0.6.round(2)
+    # workHourWholeNumber = @workHours.round(0)
+    # workdayHours = workHourWholeNumber + workHourModulus
+    workday.hoursWorked = @workHours
     workday.save
-    return workdayHours
-  end
+    return @workHours
+    end
 
   def self.retrieveCurrentWorkday(user)
     wd = user.workdays.last
