@@ -55,7 +55,7 @@ class Workday < ActiveRecord::Base
     wd = user.workdays.last
     # userWorkdays = user.workdays.all
     # userWorkdays.each do |wd|
-      if wd.dayDate == Time.zone.today
+      if wd.dayDate == Date.current
         wd
       else
         nil
