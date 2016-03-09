@@ -51,6 +51,12 @@ class Workday < ActiveRecord::Base
     return @workHours
     end
 
+
+#TODO - instead of getting last workday, iterate through all user workdayHours
+# to see if workday for Date.current exists.
+#TODO - Also Date.current is not comparing correctly so it is creating a new
+# workday everytime.
+
   def self.retrieveCurrentWorkday(user)
     wd = user.workdays.last
     # userWorkdays = user.workdays.all
