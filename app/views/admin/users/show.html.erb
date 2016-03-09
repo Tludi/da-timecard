@@ -1,7 +1,6 @@
 <!-- admin show.html.erb -->
 
 <h2>admin user show page</h2>
-<%= @user.firstName %>
 <div class="row">
   <div class="col-lg-12">
     <div class="wrapper wrapper-content">
@@ -11,6 +10,7 @@
             <div class="ibox-title">
               <h5>User <span class="badge"> <%= @user.fullName %></span></h5>
                 <div class="ibox-tools">
+                    <%=@user.account.name %>
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
                     </a>

@@ -6,10 +6,14 @@ class Admin::AdminController < ApplicationController
   before_action :require_admin
   around_filter :account_time_zone
 
-  helper_method :userFullName
+  helper_method :userFullName, :userAccount
 
   def userFullName
     current_user.firstName + " " + current_user.lastName
+  end
+
+  def userAccount
+    current_user.account
   end
 
   private

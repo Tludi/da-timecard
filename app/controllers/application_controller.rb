@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :require_login
   around_action :set_time_zone, if: :current_user
 
+
   def is_admin?
     current_user.role == "Admin"
   end

@@ -2,9 +2,10 @@
 
 class Admin::UsersController < Admin::AdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_account
 
   def index
-    @users = User.all
+    @users = @account.users.all
   end
 
   def show
@@ -19,7 +20,7 @@ class Admin::UsersController < Admin::AdminController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = @account.users.new(user_params)
 
     respond_to do |format|
       if @user.save
@@ -58,6 +59,10 @@ class Admin::UsersController < Admin::AdminController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def set_account
+      @account = current_user.account
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

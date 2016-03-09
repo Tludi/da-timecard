@@ -56,3 +56,7 @@ Project.create(name: "General Work")
 Project.create(name: "Willamette House")
 Project.create(name: "Portland House")
 Project.create(name: "Tigard House")
+
+Role.create(name: "Admin")
+Role.create(name: "Supervisor")
+Role.create(name: "Crew")
