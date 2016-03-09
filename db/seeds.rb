@@ -43,7 +43,7 @@ puts users.count
 users.each do |u|
   u.workdays.create(hoursWorked: 8,
                     user_id: u.id,
-                    dayDate: Time.zone.today,
+                    dayDate: Date.current,
                     project_id: 1,
                     notes: "Nothing yet" )
 end

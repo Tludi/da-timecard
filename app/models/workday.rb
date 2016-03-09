@@ -64,7 +64,9 @@ class Workday < ActiveRecord::Base
   end
 
   def self.createCurrentWorkday(user)
-    workday = Workday.create(user_id: user.id, project_id: 1, dayDate: Time.zone.today, hoursWorked: 0)
+    tz = user.account.time_zone
+    Time.zone = tz
+    workday = Workday.create(user_id: user.id, project_id: 1, dayDate: Date.current, hoursWorked: 0)
   end
 
 
