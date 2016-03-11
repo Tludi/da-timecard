@@ -33,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :role %><br>
-    <%= f.collection_select(:role, Role.all, :name, :name) %>
+    <%= f.collection_select(:role, @userRoles, :name, :name) %>
   </div>
   <div class="field">
     <%= f.label :pin %><br>

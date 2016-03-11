@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
     if @user = login(params[:email], params[:password])
       Time.zone = @user.account.time_zone
 
-      if @user.role == "Admin"
+      if @user.role == "Admin" || "SuperUser"
         redirect_to(admin_root_path)
       else
         @userWorkday = Workday.retrieveCurrentWorkday(@user)
@@ -18,7 +18,6 @@ class UserSessionsController < ApplicationController
         else
           @newWorkday = Workday.createCurrentWorkday(@user)
           redirect_to(@newWorkday, notice: "created new workday")
-          # redirect_to(:home)
         end
       end
     else

@@ -18,7 +18,7 @@ class Admin::AdminController < ApplicationController
 
   private
     def require_admin
-      unless current_user.role == "Admin"
+      unless current_user.role == "Admin" || "SuperUser"
         redirect_to dashboards_path(current_user)
       end
     end
