@@ -1,12 +1,14 @@
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, except: [:destroy]
-  
+
   def new
     @user = User.new
   end
 
   def create
     if @user = login(params[:email], params[:password])
+      Time.zone = @user.account.time_zone
+
       if @user.role == "Admin"
         redirect_to(admin_root_path)
       else
@@ -20,6 +22,7 @@ class UserSessionsController < ApplicationController
         end
       end
     else
+      Time.zone = "UTC"
       redirect_to(login_path, notice: "Login failed. Check your email or password.")
       # render action: 'new', notice: "Login failed"
       # flash.now[:notice] = 'Login failed'
@@ -27,6 +30,7 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
+    Time.zone = "UTC"
     logout
     redirect_to(:root, notice: 'Logged out')
   end
