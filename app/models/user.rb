@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, if: -> { new_record? || changes["password"] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes["password"] }
 
-
+  # gravtastic is a link to the gravatar system for rails
   include Gravtastic
   # default options - "mm", "identicon", "monsterid", "wavatar", "retro", "blank", or an absolut url
   # other options check https://github.com/chrislloyd/gravtastic
