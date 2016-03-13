@@ -52,27 +52,25 @@ class Workday < ActiveRecord::Base
     end
 
 
-#TODO - instead of getting last workday, iterate through all user workdayHours
-# to see if workday for Date.current exists.
-#TODO - Also Date.current is not comparing correctly so it is creating a new
-# workday everytime.
-
   def self.retrieveCurrentWorkday(user)
-    wd = user.workdays.last
-    # userWorkdays = user.workdays.all
-    # userWorkdays.each do |wd|
-      if wd.dayDate == Date.current
-        wd
-      else
-        nil
+    # wd = user.workdays.last
+    userWorkdays = user.workdays.all
+    if userWorkdays != nil
+      userWorkdays.each do |wd|
+        if wd.dayDate == Date.current
+          @currentWorkday = wd
+          break
+        else
+          @currentWorkday = nil
+        end
       end
-    # end
-  end
+    end
 
-  def self.createCurrentWorkday(user)
-    tz = user.account.time_zone
-    Time.zone = tz
-    workday = Workday.create(user_id: user.id, project_id: 1, dayDate: Date.current, hoursWorked: 0)
+    if @currentWorkday
+      @currentWorkday    
+    else
+      Workday.create(user_id: user.id, project_id: 1, dayDate: Date.current, hoursWorked: 0)
+    end
   end
 
 
