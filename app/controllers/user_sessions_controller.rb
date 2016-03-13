@@ -8,7 +8,14 @@ class UserSessionsController < ApplicationController
   def create
     if @user = login(params[:email], params[:password])
       Time.zone = @user.account.time_zone
-      redirect_to(dashboards_path, notice: "welcome")
+      case @user.role
+      when "Admin", "SuperUser"
+        redirect_to(admin_root_path)
+      when "Crew", "Supervisor"
+        redirect_to(dashboards_path, notice: "welcome")
+      else 
+        redirect_to(dashboards_path, notice: "welcome")
+      end        
       # if @user.role == "Admin" || "SuperUser"
       #   redirect_to(admin_root_path)
       # else
@@ -23,8 +30,6 @@ class UserSessionsController < ApplicationController
     else
       Time.zone = "UTC"
       redirect_to(login_path, notice: "Login failed. Check your email or password.")
-      # render action: 'new', notice: "Login failed"
-      # flash.now[:notice] = 'Login failed'
     end
   end
 
