@@ -8,18 +8,18 @@ class UserSessionsController < ApplicationController
   def create
     if @user = login(params[:email], params[:password])
       Time.zone = @user.account.time_zone
-
-      if @user.role == "Admin" || "SuperUser"
-        redirect_to(admin_root_path)
-      else
-        @userWorkday = Workday.retrieveCurrentWorkday(@user)
-        if @userWorkday != nil
-          redirect_to(workday_path(@userWorkday), notice: "retrieved existing workday")
-        else
-          @newWorkday = Workday.createCurrentWorkday(@user)
-          redirect_to(@newWorkday, notice: "created new workday")
-        end
-      end
+      redirect_to(dashboards_path, notice: "welcome")
+      # if @user.role == "Admin" || "SuperUser"
+      #   redirect_to(admin_root_path)
+      # else
+      #   @userWorkday = Workday.retrieveCurrentWorkday(@user)
+      #   if @userWorkday != nil
+      #     redirect_to(workday_path(@userWorkday), notice: "retrieved existing workday")
+      #   else
+      #     @newWorkday = Workday.createCurrentWorkday(@user)
+      #     redirect_to(@newWorkday, notice: "created new workday")
+      #   end
+      # end
     else
       Time.zone = "UTC"
       redirect_to(login_path, notice: "Login failed. Check your email or password.")
