@@ -18,6 +18,10 @@ FactoryGirl.define do
       role "Crew"
     end
 
+    factory :badUser do
+      email nil
+    end
+    
   end
 
 end

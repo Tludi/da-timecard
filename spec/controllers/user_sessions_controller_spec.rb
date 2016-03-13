@@ -4,7 +4,7 @@ RSpec.describe UserSessionsController, :type => :controller do
 
   before :each do
     @user = create(:user)
-    login_user(user = @user, route = login_path)
+    # login_user(user = @user, route = login_path)
     @account = @user.account
   end
 
@@ -23,30 +23,10 @@ RSpec.describe UserSessionsController, :type => :controller do
   describe "POST #create" do
     context "with valid attributes" do
       it "has a successful login" do
+        login_user(user = @user, route = login_path)
         expect(response.status).to eq(200)
       end
-
-      it "loads the dashboard when logged in" 
-      #
-      # it "redirects to the admin_account#index page" do
-      #   post :create, account: attributes_for(:account)
-      #   expect(response).to redirect_to admin_accounts_path
-      # end
-
     end
-
-    context "with invalid attributes" do
-      # it "does not save the new account in the database" do
-      #  expect{ post :create, account: attributes_for(:invalid_account)}.not_to change(Account, :count)
-      # end
-      #
-      # it "re-renders the new template" do
-      #   post :create, account: attributes_for(:invalid_account)
-      #   expect(response).to render_template :new
-      # end
-
-    end
-
   end
 
   describe "when DELETE #destroy" do
