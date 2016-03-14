@@ -1,24 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe TimePunch, :type => :model do
-  it "is valid with entry, clockedInStatus" do
-    timePunch = TimePunch.new(
+RSpec.describe TimePunch, type: :model do
+  it 'is valid with entry, clockedInStatus' do
+    time_punch = TimePunch.new(
       entry: Time.now,
       clockedInStatus: true
     )
-    expect(timePunch).to be_valid
+    expect(time_punch).to be_valid
   end
 
-  it "is invalid when clockedInStatus is nil" do
-    timePunch = build(:time_punch, clockedInStatus: nil)
-    timePunch.valid?
-    expect(timePunch.errors[:clockedInStatus]).to include("can't be blank")
+  it 'is invalid when entry is nil' do
+    time_punch = build(:time_punch, entry: nil)
+    time_punch.valid?
+    expect(time_punch.errors[:entry]).to include("can't be blank")
   end
-
-  it "is invalid when entry is nil" do
-    timePunch = build(:time_punch, entry: nil)
-    timePunch.valid?
-    expect(timePunch.errors[:entry]).to include("can't be blank")
-  end
-
 end
