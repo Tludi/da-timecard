@@ -39,7 +39,8 @@
           </div>
           <div class="navbar-collapse collapse" id="navbar">
             <ul class="nav navbar-nav">
-              <% if current_user && current_user.role == "Crew" %>
+              <% if current_user && current_user.role == "Crew" || current_user.role == "Supervisor" %>
+                <li><%= link_to "Dashboard", dashboards_path(current_user) %></li>
                 <li><%= link_to "Workdays", workdays_path %></li>
                 <li><%= link_to "Today", workday_path(current_user.workdays.last)  %></li>
               <% end %>

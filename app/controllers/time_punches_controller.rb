@@ -2,7 +2,7 @@ class TimePunchesController < ApplicationController
   before_action :set_workday, only: [:new, :create]
 
   def new
-    @timePunch = @workday.timePunches.new
+    @time_punch = @workday.timePunches.new
   end
 
 
