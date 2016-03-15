@@ -36,14 +36,14 @@ describe Workday do
 
   it "has a current status of false when there are no timePunches" do
     workday = build(:workday)
-    expect(workday.getCurrentStatus).to eq false
+    expect(workday.retrieve_current_status).to eq false
   end
 
   it "has a current status opposite of the previous status when new timePunch is added" do
     workday = build(:workday)
-    currentStatus = workday.getCurrentStatus
+    currentStatus = workday.retrieve_current_status
     workday.timePunches << build(:time_punch, clockedInStatus: !currentStatus)
-    newCurrentStatus = workday.getCurrentStatus
+    newCurrentStatus = workday.retrieve_current_status
     expect(newCurrentStatus).to eq !currentStatus
   end
 end

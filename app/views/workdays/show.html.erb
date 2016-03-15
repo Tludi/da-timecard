@@ -4,18 +4,18 @@
     <div class="col-md-12 center">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <span class="label label-success pull-right"><%= @currentTime %></span>
+                <span class="label label-success pull-right"><%= @current_time %></span>
                 <span><strong><%= current_user.fullName %></strong></span>
                 <h5><Workday<span><%= Time.zone %></span></h5>
             </div>
             <div class="ibox-content">
               <p>
                 <strong>Hours Worked Today:</strong>
-                <%= Time.at(@hoursWorked.round.abs).utc.strftime("%H:%M") %>
+                <%= Time.at(@hours_worked.round.abs).utc.strftime("%H:%M") %>
               </p>
               <p>
                 <strong>Hours Saved:</strong>
-                <%= Time.at(@hoursSaved.round.abs).utc.strftime("%H:%M") %>
+                <%= Time.at(@hours_saved.round.abs).utc.strftime("%H:%M") %>
               </p>
               <p>
                 <strong>dayDate:</strong>
@@ -60,10 +60,10 @@
             <div class="ibox-content">
               <%= render 'timePunchForm' %>
             </div>
-              <% if @timePunches %>
-                <% @timePunches.each do |tp| %>
+              <% if @time_punches %>
+                <% @time_punches.each do |tp| %>
                   <p><%= tp.entry %></p>
-                  <p><%= @timePunches.count %></p>
+                  <p><%= @time_punches.count %></p>
                 <% end %>
               <% end %>
         </div>
@@ -76,7 +76,7 @@
             </div>
             <div class="ibox-content">
               <div class="row">
-              <% @currentWorkdayTimePunches.each do |tp| %>
+              <% @current_workday_time_punches.each do |tp| %>
                 <div class="col-md-3" >
                   <div class="well">
                     <%= local_time(tp.created_at, '%l:%M %P') %>
