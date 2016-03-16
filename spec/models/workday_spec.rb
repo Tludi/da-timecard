@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-# RSpec.describe Workday, :type => :model do
+# RSpec.describe Workday, type: :model do
 describe Workday do
   it 'has a valid factory' do
     expect(build(:workday)).to be_valid
