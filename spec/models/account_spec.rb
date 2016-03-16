@@ -20,4 +20,6 @@ RSpec.describe Account, type: :model do
     account.valid?
     expect(account.errors[:time_zone]).to include("can't be blank")
   end
+
+  it 'is invalid without an Admin user'
 end
