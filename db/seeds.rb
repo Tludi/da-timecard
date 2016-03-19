@@ -1,20 +1,16 @@
 # database seed file for creating sample users each with 5 workdays
 Account.create(name: "Test Account", time_zone: "Pacific Time (US & Canada)")
+Account.create(name: "Bronze Construction Services Inc", time_zone: "Pacific Time (US & Canada)")
 Time.zone = "Pacific Time (US & Canada)"
-# Create 5 users
-@firstNames = Array["John", "Jose", "Amy", "Pat", "Bill"]
-@lastNames = Array["Smith", "Jones", "Walker", "Williams", "Jefferson"]
 
-5.times do |i|
-  User.create(firstName: @firstNames[i],
-              lastName: @lastNames[i],
-              email: "#{@firstNames[i]}@email.com",
-              role: "Crew",
-              password: "password",
-              password_confirmation: "password",
-              pin: 1234,
-              account_id: 1 )
-end
+User.create(firstName: "tim",
+            lastName: "bloom",
+            email: "tim",
+            role: "Crew",
+            password: "password",
+            password_confirmation: "password",
+            pin: 1234,
+            account_id: 1 )
 
 User.create(firstName: "milo",
             lastName: "bloom",
@@ -33,6 +29,15 @@ User.create(firstName: "admin",
             password_confirmation: "password",
             pin: 1234,
             account_id: 1 )
+
+User.create(firstName: "Bronze",
+            lastName: "Admin",
+            email: "admin@bronzeconstruction.com",
+            role: "Admin",
+            password: "BCSinc4130",
+            password_confirmation: "BCSinc4130",
+            pin: 1234,
+            account_id: 2 )
 
 users = User.all
 # print User count to terminal for verification
@@ -58,5 +63,6 @@ Project.create(name: "Portland House")
 Project.create(name: "Tigard House")
 
 Role.create(name: "Admin")
+Role.create(name: "SuperUser")
 Role.create(name: "Supervisor")
 Role.create(name: "Crew")
