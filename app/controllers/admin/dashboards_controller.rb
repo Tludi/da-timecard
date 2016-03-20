@@ -1,5 +1,4 @@
-# DashboardController.rb
-
+# admin/DashboardsController.rb
 class Admin::DashboardsController < Admin::AdminController
   def index
     @current_account = current_user.account
