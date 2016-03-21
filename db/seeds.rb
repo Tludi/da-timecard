@@ -57,10 +57,11 @@ workdays = Workday.all
 # print workday count to terminal for verification
 puts workdays.count
 
-Project.create(name: "General Work")
-Project.create(name: "Willamette House")
-Project.create(name: "Portland House")
-Project.create(name: "Tigard House")
+Project.create(name: "General Work", account_id: 1)
+Project.create(name: "Willamette House", account_id: 1)
+Project.create(name: "Portland House", account_id: 1)
+Project.create(name: "Tigard House", account_id: 1)
+Project.create(name: "General Work", account_id: 2)
 
 Role.create(name: "Admin")
 Role.create(name: "SuperUser")

@@ -1,11 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,300,500,700");
-/*
- *
- *   INSPINIA - Responsive Admin Theme
- *   version 2.4
- *
-*/
+
 h1,
 h2,
 h3,
@@ -543,7 +538,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
   margin-left: 0 !important;
 }
 .top-navigation .wrapper.wrapper-content {
-  padding: 40px;
+  padding: 0 40px 40px;
 }
 .top-navigation.body-small .wrapper.wrapper-content,
 .body-small .top-navigation .wrapper.wrapper-content {
