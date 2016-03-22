@@ -66,9 +66,9 @@ RSpec.describe Admin::AccountsController, type: :controller do
         expect { post :create, account: attributes_for(:account) }.to change(Account, :count).by(1)
       end
 
-      it 'creates a user with the role Admin on creation' do
-        expect { post :create, account: attributes_for(:account) }.to change(User, :count).by(1)
-      end
+      # it 'creates a user with the role Admin on creation' do
+      #   expect { post :create, account: attributes_for(:account) }.to change(User, :count).by(1)
+      # end
 
       it 'redirects to the admin_account#index page' do
         post :create, account: attributes_for(:account)
