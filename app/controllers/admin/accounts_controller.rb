@@ -4,7 +4,6 @@ class Admin::AccountsController < Admin::AdminController
 
   def index
     @accounts = Account.all
-
   end
 
   def show
@@ -22,9 +21,9 @@ class Admin::AccountsController < Admin::AdminController
     # @account.users.first.role = "Admin"
     respond_to do |format|
       if @account.save
-        format.html{ redirect_to admin_accounts_path, notice: 'Account created.' }
+        format.html { redirect_to admin_accounts_path, notice: 'Account created.' }
       else
-        format.html {render :new, notice: 'Account Not Created.'}
+        format.html { render :new, notice: 'Account Not Created.' }
       end
     end
   end
@@ -45,7 +44,6 @@ class Admin::AccountsController < Admin::AdminController
     end
   end
 
-
   def destroy
     @account.destroy
     respond_to do |format|
@@ -55,11 +53,12 @@ class Admin::AccountsController < Admin::AdminController
   end
 
   private
-    def set_account
-      @account = Account.find(params[:id])
-    end
 
-    def account_params
-      params.require(:account).permit(:name, :time_zone, users_attributes: [:id, :name, :email, :password, :password_confirmation, :role, :account_id])
-    end
+  def set_account
+    @account = Account.find(params[:id])
+  end
+
+  def account_params
+    params.require(:account).permit(:name, :time_zone, users_attributes: [:id, :name, :email, :password, :password_confirmation, :role, :account_id])
+  end
 end
