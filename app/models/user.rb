@@ -18,11 +18,9 @@ class User < ActiveRecord::Base
   include Gravtastic
   # default options - "mm", "identicon", "monsterid", "wavatar", "retro", "blank", or an absolut url
   # other options check https://github.com/chrislloyd/gravtastic
-  gravtastic default: "mm"
-
+  gravtastic default: 'mm'
 
   def fullName
     [firstName.capitalize, lastName.capitalize].join(' ')
   end
-
 end
