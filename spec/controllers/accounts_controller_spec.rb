@@ -18,6 +18,11 @@ RSpec.describe AccountsController, :type => :controller do
       it 'saves the new account to the database' do
         expect{post :create, account: attributes_for(:account)}.to change(Account, :count).by(1)
       end
+
+      it 'creates a new user with the new account' do
+        expect{post :create, account: attributes_for(:account)}.to change(User, :count).by(1)
+      end
+
       it 'redirects to the login page' do
             
       end

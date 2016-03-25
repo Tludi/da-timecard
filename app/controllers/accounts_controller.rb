@@ -10,11 +10,11 @@ class AccountsController < ApplicationController
 
   def create
     @account = Account.new(account_params)
-    # @user = User.new
     # @account.users.first.role = "Admin"
     respond_to do |format|
       if @account.save
-        format.html { redirect_to admin_accounts_path, notice: 'Account created.' }
+        @user = @account.users.create(account_params[:user])
+        format.html { redirect_to login_path, notice: 'Account created.' }
       else
         format.html { render :new, notice: 'Account Not Created.' }
       end

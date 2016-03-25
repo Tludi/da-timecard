@@ -3,7 +3,7 @@
 <div class="row login_box">
 
   <div class="col-md-3 center-block">
-    <h1>Login</h1>
+    <h1>Login that</h1>
     
     <%= form_for @user do |f|%>
       
@@ -18,7 +18,9 @@
       </div>
       
     <% end -%>
-
+    <p>
+    <%= link_to 'Or register new account', new_account_path %>
+    </p>
   </div>
 
 </div>
