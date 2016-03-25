@@ -23,7 +23,7 @@ RSpec.describe UserSessionsController, :type => :controller do
   describe "POST #create" do
     context "with valid attributes" do
       it "has a successful login" do
-        login_user(user = @user, route = login_path)
+        login_user(@user, login_path)
         expect(response.status).to eq(200)
       end
     end
