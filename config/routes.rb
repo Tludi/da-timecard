@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   # resources :users
   resources :projects
   resources :dashboards
+  resources :accounts
 
   get 'user/:id' => 'users#show', as: :user
 
