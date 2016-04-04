@@ -5,7 +5,7 @@ class AccountsController < ApplicationController
 
   def new
     @account = Account.new
-    @user = @account.users.new
+    @account.users.build
   end
 
   def create
@@ -13,7 +13,7 @@ class AccountsController < ApplicationController
     # @account.users.first.role = "Admin"
     respond_to do |format|
       if @account.save
-        @user = @account.users.create(account_params[:user])
+        # @user = @account.users.create(account_params[:user])
         format.html { redirect_to login_path, notice: 'Account created.' }
       else
         format.html { render :new, notice: 'Account Not Created.' }
