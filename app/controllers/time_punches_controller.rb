@@ -25,10 +25,10 @@ class TimePunchesController < ApplicationController
 
     respond_to do |format|
       if @workday.save
-        format.html { redirect_to @workday, notice: 'clock record was successfully created.' }
+        format.html { redirect_to dashboards_path, notice: 'clock record was successfully created.' }
         # format.json { render :show, status: :created, location: @workday }
       else
-        format.html { redirect_to @workday, notice: 'clock record was not created(from tp controller).' }
+        format.html { redirect_to dashboards_path, notice: 'clock record was not created(from tp controller).' }
         # format.json { render json: @workday.errors, status: :unprocessable_entity }
       end
     end
@@ -39,7 +39,7 @@ class TimePunchesController < ApplicationController
     @workday = @timePunch.workday_id
     @timePunch.destroy
     respond_to do |format|
-      format.html { redirect_to workday_path(@workday), notice: 'record was successfully destroyed.' }
+      format.html { redirect_to dashboards_path, notice: 'record was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
