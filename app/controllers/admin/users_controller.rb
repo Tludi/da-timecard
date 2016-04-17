@@ -22,7 +22,8 @@ class Admin::UsersController < Admin::AdminController
 
   def create
     @user = @account.users.new(user_params)
-    @userRoles = Role.where.not(name: "SuperUser")
+    # @userRoles = Role.where.not(name: "SuperUser")
+    @userRoles = Role.all
 
     respond_to do |format|
       if @user.save

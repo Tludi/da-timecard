@@ -1,11 +1,12 @@
 # projects_controller.rb
 class Admin::ProjectsController < Admin::AdminController
   before_action :set_project, only: [:show, :edit, :update, :destroy, :addUser]
+  before_action :set_current_account, only: [:index, :new, :create]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all 
+    @projects = @current_account.projects
   end
 
   # GET /projects/1
@@ -18,7 +19,7 @@ class Admin::ProjectsController < Admin::AdminController
 
   # GET /projects/new
   def new
-    @project = Project.new
+    @project = @current_account.projects.new
   end
 
   # GET /projects/1/edit
@@ -28,11 +29,12 @@ class Admin::ProjectsController < Admin::AdminController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
+    # @project = Project.new(project_params)
+    @project = @current_account.projects.new(project_params)
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to admin_projects_path, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -46,7 +48,7 @@ class Admin::ProjectsController < Admin::AdminController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to admin_projects_url, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -60,7 +62,7 @@ class Admin::ProjectsController < Admin::AdminController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to admin_projects_url, notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +75,10 @@ class Admin::ProjectsController < Admin::AdminController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_current_account
+      @current_account = current_user.account
+    end
+
     def set_project
       @project = Project.find(params[:id])
     end
