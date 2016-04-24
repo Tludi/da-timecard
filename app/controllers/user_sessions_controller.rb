@@ -12,9 +12,9 @@ class UserSessionsController < ApplicationController
       when "Admin", "SuperUser"
         redirect_to(admin_root_path)
       when "Crew", "Supervisor"
-        redirect_to(dashboards_path, notice: "welcome")
+        redirect_to(dashboard_path, notice: "welcome")
       else 
-        redirect_to(dashboards_path, notice: "welcome")
+        redirect_to(dashboard_path, notice: "welcome")
       end        
       # if @user.role == "Admin" || "SuperUser"
       #   redirect_to(admin_root_path)

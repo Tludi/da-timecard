@@ -1,6 +1,5 @@
 # accounts_controller.rb
 class AccountsController < ApplicationController
-  # before_action :set_account, only: [:show, :edit, :update, :destroy]
   skip_before_action :require_login
 
   def new
@@ -22,10 +21,6 @@ class AccountsController < ApplicationController
   end
 
   private
-
-  def set_account
-    @account = Account.find(params[:id])
-  end
 
   def account_params
     params.require(:account).permit(:name, :time_zone, users_attributes: [:id, :name, :email, :password, :password_confirmation, :role, :account_id])
