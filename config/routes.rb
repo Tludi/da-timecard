@@ -1,18 +1,27 @@
 Rails.application.routes.draw do
   root 'home#index'
+  get 'home' => 'home#index', :as => :home
+  get 'dashboard' => 'dashboards#index', as: :dashboard
+  get 'login' => 'user_sessions#new', :as => :login
+  get 'logout' => 'user_sessions#destroy', :as => :logout
+  get 'user/:id' => 'users#show', as: :user
 
+  resources :user_sessions
+  resources :accounts, only: [:new, :create]
+  
+  resources :workdays, only: [:index, :show, :new, :create] do
+    resources :time_punches
+  end
+  
   namespace :admin do
     root 'dashboards#index'
     resources :accounts do
       resources :users
     end
-
     resources :users do
       resources :workdays
     end
-
     resources :dashboards
-
     resources :projects do
       member do
         patch :addUser
@@ -21,22 +30,12 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :time_punches
-  resources :user_sessions
+  #remove the following route in production
+  resources :time_punches
+
+
   # resources :users
   # resources :projects
   # resources :dashboards
-  resources :accounts, only: [:new, :create]
-  get 'dashboard' => 'dashboards#index', as: :dashboard
-
-  get 'user/:id' => 'users#show', as: :user
-
-  get 'home' => 'home#index', :as => :home
-  get 'login' => 'user_sessions#new', :as => :login
-  get 'logout' => 'user_sessions#destroy', :as => :logout
-
-  resources :workdays do
-    resources :time_punches
-  end
 
 end
