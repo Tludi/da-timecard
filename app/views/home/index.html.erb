@@ -5,8 +5,13 @@
     <h1 class="big">Construction Projects Made Easier with <strong>Tract</strong>Work.</h1>
     <h3>Organize all your project data in one central location</h3>
     <div>
-      <%= link_to "Log In", login_path, class: "btn-lg btn-primary" %>
+      <% if current_user  %>
+        <%= link_to "You are logged in - select to Log Out", logout_path, class: "btn-lg btn-warning" %>
+      <% else %>
+        <%= link_to "Log In", login_path, class: "btn-lg btn-primary" %>
+      <% end %>
     </div>
+
     <hr>
   </div>
     <div class="row">

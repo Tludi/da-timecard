@@ -1,4 +1,4 @@
-<%= form_for @account do |a| %>
+<%= form_for @account, class: "m-t" do |a| %>
   <% if @account.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@account.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -10,49 +10,39 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= a.label :Account_name %><br>
-    <%= a.text_field :name %>
+  <div class="form-group">
+    <%= a.text_field :name, class: "form-control", placeholder: "Account Name*" %>
   </div>
-  <div class="field">
-    <%= a.label :time_zone %><br>
-    <%= a.time_zone_select :time_zone %>
+  <div class="form-group">
+    <span>Time Zone:* <%= a.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %></span>
   </div>
   <hr>
   <h4>Account Admin</h4>
       <%= fields_for :users do |f| %>
-        <div class="field">
-          <%= f.label :firstName %><br>
-          <%= f.text_field :firstName %>
+        <div class="form-group">
+          <%= f.text_field :firstName, class: "form-control", placeholder: "Admin First Name*" %>
         </div>
-        <div class="field">
-          <%= f.label :lastName %><br>
-          <%= f.text_field :lastName %>
+        <div class="form-group">
+          <%= f.text_field :lastName, class: "form-control", placeholder: "Admin Last Name*" %>
         </div>
-          <div class="field">
-          <%= f.label :email %><br>
-          <%= f.text_field :email %>
+          <div class="form-group">
+          <%= f.text_field :email, class: "form-control", placeholder: "Admin Email**" %>
         </div>
-        <div class="field">
-          <%= f.label :password %><br>
-          <%= f.text_field :password %>
+        <div class="form-group">
+          <%= f.text_field :password, class: "form-control", placeholder: "Password*" %>
+          <p class="small">Must be at least 6 characters</p>
         </div>
-          <div class="field">
-          <%= f.label :password_confirmation %><br>
-          <%= f.text_field :password_confirmation %>
-        </div>
-        <div class="field">
-          <%= f.label :role %><br>
-          <%= f.text_field :role %>
-        </div>
-        <div class="field">
-          <%= f.label :pin %><br>
-          <%= f.text_field :pin %>
+        <div class="form-group">
+          <%= f.text_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation*" %>
         </div>
       <% end %>
+      <p class="small">*Required  **Required and unique</p>
       <hr>
   <div class="actions">
-    <%= a.submit %>
+    <%= a.submit 'Register', class: "btn btn-primary block full-width m-b" %>
   </div>
 <% end %>
+<br>
+<p class="text-muted text-center"><small>Already have an account?</small></p>
+<%= link_to :login, login_path, class: "btn btn-sm btn-white btn-block" %>
 <br>

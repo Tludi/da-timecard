@@ -1,24 +1,26 @@
-<div class="row login_box">
-  <div class="col-md-12 center">
-    <h2 class= "label label-danger"><%= notice %></h2>
-    <h1>Login</h1>
-    
-    <%= form_tag user_sessions_path, :method => :post do %>
-      
-      <div class="field">
-        <%= text_field_tag :email, "", placeholder: "Email", class:"form-input" %>
-      </div>
-      <div class="field">
-        <%= text_field_tag :password, "", placeholder: "Password", class:"form-input"%>
-      </div>
-      <div class="actions">
-        <%= submit_tag "Sign in", class: "btn btn-primary width250" %>
-      </div>
-      
-    <% end -%>
-    <p>
-    <%= link_to 'Or register new account', new_account_path %>
-    </p>
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+  <div>
+    <div>
+      <h1 class="logo-name">da</h1>
+    </div>
+      <h2>Welcome to TractWork</h2>
+      <p>
+            
+      </p>
+      <p>Login in</p>
+      <%= form_tag user_sessions_path, :method => :post, class: "m-t" do %>
+      <!-- <form class="m-t" role="form" action="#"> -->
+          <div class="form-group">
+              <%= text_field_tag :email, "", placeholder: "Email", class:"form-control" %>
+          </div>
+          <div class="form-group">
+              <%= text_field_tag :password, "", placeholder: "Password", class:"form-control"%>
+          </div>
+          <%= submit_tag "Sign in", class: "btn btn-primary block full-width m-b" %>
+      <% end -%>
+            <!-- <a href="#"><small>Forgot password?</small></a> -->
+      <p class="text-muted text-center"><small>Do not have an account?</small></p>
+      <%= link_to 'Register a new account', new_account_path, class: "btn btn-sm btn-white btn-block" %>
+      <p class="m-t"> <small>Time Tracking and Project Planning - &copy; 2016</small> </p>
   </div>
-
 </div>
