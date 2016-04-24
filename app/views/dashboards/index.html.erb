@@ -1,30 +1,96 @@
 <!-- Dashboard index.html.erb -->
+<h2>Dashboard</h2>
+<div class="row">
+    <div class="col-md-12 center">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <span class="label label-success pull-right"><%= @current_time %></span>
+                <span><strong><%= current_user.fullName %></strong></span>
+                <h5><Workday<span><%= Time.zone %></span></h5>
+            </div>
+            <div class="ibox-content">
+              <p>
+                <strong>Hours Worked Today:</strong>
+                <%= Time.at(@hours_worked.round.abs).utc.strftime("%H:%M") %>
+              </p>
+              <p>
+                <strong>Hours Saved:</strong>
+                <%= Time.at(@hours_saved.round.abs).utc.strftime("%H:%M") %>
+              </p>
+              <p>
+                <strong>dayDate:</strong>
+                <%= @workday.dayDate.strftime('%B %e, %Y') %>
+              </p>
+              <p>
+                <%= render 'form' %>
+              </p>
+
+<!--               <p>
+                <strong>Notes:</strong>
+                <%= @workday.notes %>
+              </p>
 
 
+              <p>
+                <strong>dayDate:</strong>
+                  <%= @workday.dayDate.strftime('%B %e, %Y') %>
+                <strong>DateTime.now.to_date:</strong>
+                  <%= DateTime.now.to_date.strftime('%B %e,%Y') %>
+              </p>
 
-  <h2>Dashboard</h2>
-  <div class="container">
-    <table class="table table-striped">
-      <tr>
-        <th>User</th>
-        <th>Role</th>
-        <th>Workdays</th>
-        <th></th>
-      </tr>
-      <tr>
-        <td><%= current_user.firstName %></td>
-        <td><%= current_user.role %></td>
-        <td><%= current_user.workdays.count %></td>
-        <td><%= link_to "show", current_user %></td>
-      </tr>
-    </table>
-    <hr>
-    <p>Latest workday date: <%= @workday.dayDate %></p>
-    <p>Date.current: <%= Date.current %></p>
-    <p>Time.current: <%= Time.current %></p>
-  </div>
+                <% if @workday.dayDate == DateTime.now.to_date %>
+                  <p>dates match</p>
+                <% else %>
+                  <p>dates are screwed</p>
+                <% end %> -->
 
-
-
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 center">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <span class="label label-success pull-right"><%= Time.zone.now.strftime('%l:%M %P') %></span>
+                <h5>Time Clock</h5>
+            </div>
+            <div class="ibox-content">
+              <%= render 'timePunchForm' %>
+            </div>
+              <% if @time_punches %>
+                <% @time_punches.each do |tp| %>
+                  <p><%= tp.entry %></p>
+                  <p><%= @time_punches.count %></p>
+                <% end %>
+              <% end %>
+        </div>
+    </div>
+    <div class="col-md-12 center">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <span class="label label-success pull-right">in/out</span>
+                <h5>Time Punches</h5>
+            </div>
+            <div class="ibox-content">
+              <div class="row">
+              <% @current_workday_time_punches.each do |tp| %>
+                <div class="col-md-3" >
+                  <div class="well">
+                    <%= local_time(tp.created_at, '%l:%M %P') %>
+                    <% if tp.clockedInStatus %>
+                      <p>In: <%= tp.clockedInStatus %></p>
+                    <% else %>
+                      <p>Out: <%= tp.clockedInStatus %></p>
+                    <% end %>
+                    <%= link_to 'Destroy', tp, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  </div>
+                </div>
+              <% end %>
+              </div>
+        </div>
+      </div>
+    </div>
+</div>
 
 
