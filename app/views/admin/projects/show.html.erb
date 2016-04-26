@@ -1,12 +1,24 @@
 <!-- show.html.erb -->
 
-<h3><%= @project.name %></h3>
+<h3><%= @project.name %>
+<%= link_to edit_admin_project_path(@project) do %>
+  <span class="fa fa-edit"></span>
+<% end %>
+     </h3>             
 <hr>
-
+<p>Address: <%= @project.address1 %></p>
+<p>Address<small> (cont.)</small>: <%= @project.address2 %></p>
+<p>City: <%= @project.city %></p>
+<p>State: <%= @project.state %></p>
+<p>Zip Code: <%= @project.zip_code %></p>
+<p>Project Contact: <%= @project.contact %></p>
+<p>Contact Phone#: <%= @project.contact_phone %></p>
+<hr>
+<h3>Crew assigned to project: </h3>
 <% @projectUsers.each do |u| %>
   <p><%= u.fullName %> - Account: <%= u.account.name %></p>
 <% end %>
-
+<hr>
 <div>
 <!-- insert add user to project form here -->
 </div>
