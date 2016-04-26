@@ -18,6 +18,7 @@ class Admin::UsersController < Admin::AdminController
   end
 
   def edit
+    @userRoles = Role.where.not(name: "SuperUser")
   end
 
   def create
