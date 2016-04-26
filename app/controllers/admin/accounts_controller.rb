@@ -1,4 +1,5 @@
 # admin account_controller.rb
+# This controller is not used for creating initial account.
 class Admin::AccountsController < Admin::AdminController
   before_action :set_account, only: [:show, :edit, :update, :destroy]
 
@@ -13,7 +14,7 @@ class Admin::AccountsController < Admin::AdminController
 
   def new
     @account = Account.new
-    @user = @account.users.new
+    @account.users.build
   end
 
   def create
@@ -21,6 +22,8 @@ class Admin::AccountsController < Admin::AdminController
     # @account.users.first.role = "Admin"
     respond_to do |format|
       if @account.save
+        @account.users.first.update_attribute(:role, "Admin")
+        # @account.projects.create(name: "General Work")
         format.html { redirect_to admin_accounts_path, notice: 'Account created.' }
       else
         format.html { render :new, notice: 'Account Not Created.' }
@@ -59,6 +62,6 @@ class Admin::AccountsController < Admin::AdminController
   end
 
   def account_params
-    params.require(:account).permit(:name, :time_zone, users_attributes: [:id, :name, :email, :password, :password_confirmation, :role, :account_id])
+    params.require(:account).permit(:name, :time_zone, users_attributes: [:id, :firstName, :lastName, :email, :password, :password_confirmation, :role, :account_id])
   end
 end

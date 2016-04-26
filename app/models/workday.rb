@@ -67,6 +67,7 @@ class Workday < ActiveRecord::Base
     if @current_workday
       @current_workday
     else
+      #TODO change project_id to account general work project
       Workday.create(user_id: user.id, project_id: 1, dayDate: Date.current, hoursWorked: 0)
     end
   end

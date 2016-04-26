@@ -74,6 +74,11 @@ RSpec.describe Admin::AccountsController, type: :controller do
         post :create, account: attributes_for(:account)
         expect(response).to redirect_to admin_accounts_path
       end
+
+      it 'creates a default project with a new account' do
+        post :create, account: attributes_for(:account)
+        expect(@account.projects).to eq(1)
+      end
     end
 
     context 'with invalid attributes' do
