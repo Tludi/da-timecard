@@ -1,11 +1,12 @@
 <!-- show.html.erb -->
 
-<h1><%= @project.name %></h1>
+<h3><%= @project.name %></h3>
+<hr>
 
 <% @projectUsers.each do |u| %>
-  <p><%= u.firstName %></p>
+  <p><%= u.fullName %> - Account: <%= u.account.name %></p>
 <% end %>
 
 <div>
-  <%= render "add_user_form" %>
+<!-- insert add user to project form here -->
 </div>

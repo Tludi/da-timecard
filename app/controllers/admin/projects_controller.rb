@@ -80,7 +80,8 @@ class Admin::ProjectsController < Admin::AdminController
     end
 
     def set_project
-      @project = Project.find(params[:id])
+      # @project = Project.find(params[:id])
+      @project = current_user.account.projects.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
