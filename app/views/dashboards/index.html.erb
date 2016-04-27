@@ -79,11 +79,15 @@
                   <div class="well">
                     <%= local_time(tp.created_at, '%l:%M %P') %>
                     <% if tp.clockedInStatus %>
-                      <p>In: <%= tp.clockedInStatus %></p>
+                      <p class="label label-success">In</p>
                     <% else %>
-                      <p>Out: <%= tp.clockedInStatus %></p>
+                      <p class="label label-danger">Out</p>
                     <% end %>
-                    <%= link_to 'Destroy', tp, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% if current_user.firstName == "milo" %>
+                    <p>
+                      <%= link_to 'Destroy', tp, method: :delete, data: { confirm: 'Are you sure?' } %>
+                      </p>
+                    <% end %>
                   </div>
                 </div>
               <% end %>
