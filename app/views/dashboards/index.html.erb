@@ -4,23 +4,16 @@
     <div class="col-md-12 center">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <span class="label label-success pull-right"><%= @current_time %></span>
-                <span><strong><%= current_user.fullName %></strong></span>
-                <h5><Workday<span><%= Time.zone %></span></h5>
+                <span class="label label-success pull-right"><%= @workday.dayDate.strftime('%B %e, %Y') %></span>
+                <span><strong><%= @workday.dayDate.strftime('%A')  %></strong></span>
+                <h5><span><%= current_user.fullName %></span></h5>
             </div>
             <div class="ibox-content">
               <p>
                 <strong>Hours Worked Today:</strong>
                 <%= Time.at(@hours_worked.round.abs).utc.strftime("%H:%M") %>
               </p>
-              <p>
-                <strong>Hours Saved:</strong>
-                <%= Time.at(@hours_saved.round.abs).utc.strftime("%H:%M") %>
-              </p>
-              <p>
-                <strong>dayDate:</strong>
-                <%= @workday.dayDate.strftime('%B %e, %Y') %>
-              </p>
+
               <p>
                 <%= render 'form' %>
               </p>
