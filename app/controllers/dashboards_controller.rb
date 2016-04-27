@@ -3,8 +3,8 @@
 # doozer
 # 1-14-20016
 class DashboardsController < ApplicationController
-  
-  # before_action :check_for_current_workday
+  before_action :set_account
+    # before_action :check_for_current_workday
 
   def index
     @user = current_user
@@ -30,6 +30,10 @@ class DashboardsController < ApplicationController
 
   def get_current_time
     Time.zone.today
+  end
+
+  def set_account
+    @account = current_user.account
   end
 
 end

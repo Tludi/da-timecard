@@ -41,7 +41,7 @@
                       <tr>
                         <td><%= workday.dayDate.strftime('%m/%d/%Y') %></td>
                         <td><%= Time.at(workday.hoursWorked.round.abs).utc.strftime("%H:%M") %></td>
-                        <td><%= workday.project_id%></td>
+                        <td><%= workday.project.name%></td>
                         <td><%= workday.notes %></td>
                         <td><%= workday.timePunches.count %></td>
                       </tr>
