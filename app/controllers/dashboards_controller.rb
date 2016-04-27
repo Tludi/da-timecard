@@ -17,7 +17,7 @@ class DashboardsController < ApplicationController
     @time_punch_status = @latest_time_punch.clockedInStatus if @latest_time_punch
     @current_workday_time_punches = @workday.timePunches
 
-    @current_project = Project.find(@workday.project.id)
+    # @current_project = Project.find(@workday.project.id)
     @hours_worked = Workday.calculate_workhours(@workday)
     @hours_saved = @workday.hoursWorked
   end
