@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -44,7 +43,7 @@ ActiveRecord::Schema.define(version: 20160426210121) do
   end
 
   create_table "time_punches", force: :cascade do |t|
-    t.time     "entry"
+    t.datetime "entry"
     t.integer  "workday_id"
     t.boolean  "clockedInStatus"
     t.datetime "created_at",      null: false
@@ -62,14 +61,13 @@ ActiveRecord::Schema.define(version: 20160426210121) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "account_id"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   create_table "workdays", force: :cascade do |t|
     t.decimal  "hoursWorked"
-    t.integer  "user_id"
     t.date     "dayDate"
+    t.integer  "user_id"
     t.integer  "project_id"
     t.text     "notes"
     t.datetime "created_at",  null: false
