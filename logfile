@@ -3,3 +3,19 @@ LOG:  MultiXact member wraparound protections are now enabled
 LOG:  autovacuum launcher started
 LOG:  database system is ready to accept connections
 FATAL:  database "timecard_development" does not exist
+ERROR:  syntax error at or near "asc" at character 105
+STATEMENT:  SELECT "time_punches".* FROM "time_punches" WHERE "time_punches"."workday_id" = $1 ORDER BY created_at, asc
+ERROR:  syntax error at or near "asc" at character 105
+STATEMENT:  SELECT "time_punches".* FROM "time_punches" WHERE "time_punches"."workday_id" = $1 ORDER BY created_at, asc
+ERROR:  syntax error at or near "asc" at character 105
+STATEMENT:  SELECT "time_punches".* FROM "time_punches" WHERE "time_punches"."workday_id" = $1 ORDER BY created_at, asc
+ERROR:  syntax error at or near "asc" at character 105
+STATEMENT:  SELECT "time_punches".* FROM "time_punches" WHERE "time_punches"."workday_id" = $1 ORDER BY created_at, asc
+ERROR:  syntax error at or near "asc" at character 105
+STATEMENT:  SELECT "time_punches".* FROM "time_punches" WHERE "time_punches"."workday_id" = $1 ORDER BY created_at, asc
+ERROR:  syntax error at or near "asc" at character 105
+STATEMENT:  SELECT "time_punches".* FROM "time_punches" WHERE "time_punches"."workday_id" = $1 ORDER BY created_at, asc
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down

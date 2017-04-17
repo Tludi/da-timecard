@@ -15,7 +15,7 @@ class DashboardsController < ApplicationController
     @time_punch = TimePunch.new
     @latest_time_punch = @workday.timePunches.last
     @time_punch_status = @latest_time_punch.clockedInStatus if @latest_time_punch
-    @current_workday_time_punches = @workday.timePunches
+    @current_workday_time_punches = @workday.timePunches.order(created_at: :desc)
 
     # @current_project = Project.find(@workday.project.id)
     @hours_worked = Workday.calculate_workhours(@workday)
