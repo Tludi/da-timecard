@@ -4,23 +4,16 @@
     <div class="col-md-12 center">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <span class="label label-success pull-right"><%= @current_time %></span>
-                <span><strong><%= current_user.fullName %></strong></span>
-                <h5><Workday<span><%= Time.zone %></span></h5>
+                <span class="label label-success pull-right"><%= @workday.dayDate.strftime('%B %e, %Y') %></span>
+                <span><strong><%= @workday.dayDate.strftime('%A')  %></strong></span>
+                <h5><span><%= current_user.fullName %></span></h5>
             </div>
             <div class="ibox-content">
               <p>
                 <strong>Hours Worked Today:</strong>
                 <%= Time.at(@hours_worked.round.abs).utc.strftime("%H:%M") %>
               </p>
-              <p>
-                <strong>Hours Saved:</strong>
-                <%= Time.at(@hours_saved.round.abs).utc.strftime("%H:%M") %>
-              </p>
-              <p>
-                <strong>dayDate:</strong>
-                <%= @workday.dayDate.strftime('%B %e, %Y') %>
-              </p>
+
               <p>
                 <%= render 'form' %>
               </p>
@@ -79,11 +72,15 @@
                   <div class="well">
                     <%= local_time(tp.created_at, '%l:%M %P') %>
                     <% if tp.clockedInStatus %>
-                      <p>In: <%= tp.clockedInStatus %></p>
+                      <p class="label label-success">In</p>
                     <% else %>
-                      <p>Out: <%= tp.clockedInStatus %></p>
+                      <p class="label label-danger">Out</p>
                     <% end %>
-                    <%= link_to 'Destroy', tp, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% if current_user.firstName == "milo" %>
+                    <p>
+                      <%= link_to 'Destroy', tp, method: :delete, data: { confirm: 'Are you sure?' } %>
+                      </p>
+                    <% end %>
                   </div>
                 </div>
               <% end %>

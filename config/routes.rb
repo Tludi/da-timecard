@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :user_sessions
   resources :accounts, only: [:new, :create]
   
-  resources :workdays, only: [:index, :show, :new, :create] do
+  resources :workdays, only: [:index, :show, :new, :create, :update] do
     resources :time_punches
   end
   
@@ -18,10 +18,15 @@ Rails.application.routes.draw do
     resources :accounts do
       resources :users
     end
+
+    resources :workdays
+    
     resources :users do
       resources :workdays
     end
+
     resources :dashboards
+
     resources :projects do
       member do
         patch :addUser

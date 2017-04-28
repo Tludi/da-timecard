@@ -71,7 +71,7 @@ class WorkdaysController < ApplicationController
   def update
     respond_to do |format|
       if @workday.update(workday_params)
-        format.html { redirect_to dashboards_path, notice: 'Workday was successfully updated.' }
+        format.html { redirect_to dashboard_path, notice: 'Workday was successfully updated.' }
         format.json { render :show, status: :ok, location: @workday }
       else
         format.html { render :edit }

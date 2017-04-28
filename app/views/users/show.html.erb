@@ -37,7 +37,7 @@
           <tr>
             <td><%= workday.hoursWorked %></td>
             <td><%= workday.dayDate %></td>
-            <td><%= workday.project.name %></td>
+            <td><%= workday.project_id %></td>
             <td><%= workday.notes %></td>
             <td><%= link_to 'Show', workday %></td>
             <% if current_user.role == "Supervisor" %>
