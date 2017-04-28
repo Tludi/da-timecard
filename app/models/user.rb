@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   authenticates_with_sorcery!
   belongs_to :account
 

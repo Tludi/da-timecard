@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 ruby '2.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+
 gem 'rails', '5.0.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
@@ -57,7 +58,7 @@ group :development, :test do
   gem 'guard', '>= 2.2.2'
   gem 'guard-rspec', require: false
   # gem 'guard-minitest'
-  gem 'rspec-rails', '~> 3.1.0'
+  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem 'factory_girl_rails', '~> 4.0'
 end
 

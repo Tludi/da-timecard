@@ -1,5 +1,5 @@
 # workday.rb
-class Workday < ActiveRecord::Base
+class Workday < ApplicationRecord
   belongs_to :user
   belongs_to :project
   has_many :timePunches
