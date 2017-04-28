@@ -1,4 +1,4 @@
-class TimePunch < ActiveRecord::Base
+class TimePunch < ApplicationRecord
   belongs_to :workday
 
   validates_presence_of :entry
