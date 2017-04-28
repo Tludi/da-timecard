@@ -47,13 +47,13 @@
                   <span class="text-muted text-xs block"><%= current_user.role %><b class="caret"></b></span>
                 </span>
               </a>
-              <ul class="dropdown-menu animated fadeInRight m-t-xs">
+              <!-- Dropdown info on dashobard for User in upper left section -->
+<!--               <ul class="dropdown-menu animated fadeInRight m-t-xs">
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">Contacts</a></li>
                 <li><a href="#">Mailbox</a></li>
                 <li class="divider"></li>
-                <!-- <li><a href="login.html">Logout</a></li> -->
-              </ul>
+              </ul> -->
             </div>
             <div class="logo-element">
                 da
@@ -76,8 +76,14 @@
               <span><i class="fa fa-users"></i> Users</span>
             <% end %>
           </li>
-		  <% if current_user.role == "SuperUser" %>
-		  <hr>
+        <hr>
+          <li>
+            <%= link_to admin_roles_path do %>
+              <span><i class="fa fa-id-card"></i> Roles</span>
+            <% end %>
+          </li>
+      <% if current_user.role == "SuperUser" %>
+      <hr>
           <li>
             <%= link_to admin_accounts_path do %>
               <span><i class="fa fa-book"></i> Accounts</span>
