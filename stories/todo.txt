@@ -1,0 +1,70 @@
+*** Todo file ***
+General App 
+- add fonticon to assets so it does not hit the internet on refresh
+- when closing browser tab, admin reverts to show regular pages
+- research Role gems
+- how to update records that use Role and Task if Role/Task change?
+
+
+Admin
+  Dashboard#index
+    - disable or remove search
+    - Active tab on left side menu not working
+    - center image and username on left corner?
+    - update Date in footer
+
+  Projects#index
+    - change links to fontIcons
+    - add job # to database
+    - add active bool to database
+    - show by active/non active
+    - sort by job name or created_at
+    - remove tasks link
+    - NEW PROJECT button on page
+    #show
+    - add map to page to show location?
+    - add link to crew name for user#show
+    - remove account name for crew
+    - add total hours worked on project for crew?
+    - show tasks and ability to add new (maybe on index)
+    #edit
+    - change button look on form
+    - add job# and active box when added to db
+    - center form on page
+
+  User#index
+    - change links to fontIcons
+    - sort by Role. Maybe different tables for different roles
+    #show
+    - remove icon links on right side next to account name
+    - rename page name
+    - change workday date format
+    - add link to workday#show page
+    - add link to delete workday?
+    - what if there are multiple projects for 1 day?
+    - add link to project#show page
+    #edit
+    - add instructions for password *at least 6 characters
+    - hide pin until needed
+    - style submit button
+    - center form
+    - update page title "edit user"
+    - seperate firstname to First Name, lastname to Last Name
+
+  Role#index
+    - do not allow to delete role if user with role exists
+    - do not allow to delete Admin
+    #edit
+    - style submit button
+    - center form
+    - by updating Role, does it update the User.role.name?
+
+  Task#index
+    - change links to fontIcons
+    - width of table
+    - remove show link
+
+  Workday#index
+    - need to create link in Admin#Dashboard
+    - How to sort timePunches into workSessions
+    - 
