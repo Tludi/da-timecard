@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :work_sessions
+  namespace :admin do
+    get 'tasks/index'
+  end
+
+  resources :tasks
   root 'home#index'
   get 'home' => 'home#index', :as => :home
   get 'dashboard' => 'dashboards#index', as: :dashboard
@@ -23,6 +29,8 @@ Rails.application.routes.draw do
 
     resources :workdays
     
+    resources :tasks
+
     resources :users do
       resources :workdays
     end

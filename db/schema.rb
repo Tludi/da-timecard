@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428220758) do
+ActiveRecord::Schema.define(version: 20170501232351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20170428220758) do
     t.integer  "account_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "account_id"
+    t.integer  "work_session_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "time_punches", force: :cascade do |t|
     t.datetime "entry"
     t.integer  "workday_id"
@@ -63,6 +72,16 @@ ActiveRecord::Schema.define(version: 20170428220758) do
     t.datetime "updated_at",       null: false
     t.integer  "account_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+  end
+
+  create_table "work_sessions", force: :cascade do |t|
+    t.string   "task"
+    t.decimal  "total_time"
+    t.decimal  "estimated_time"
+    t.boolean  "status"
+    t.integer  "workday_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "workdays", force: :cascade do |t|

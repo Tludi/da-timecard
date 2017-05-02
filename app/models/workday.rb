@@ -3,7 +3,8 @@ class Workday < ApplicationRecord
   belongs_to :user
   belongs_to :project
   has_many :timePunches
-
+  has_many :workSessions
+  
   accepts_nested_attributes_for :timePunches
   validates_presence_of :dayDate, :hoursWorked
 

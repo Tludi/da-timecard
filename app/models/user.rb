@@ -4,7 +4,8 @@ class User < ApplicationRecord
 
   has_many :workdays, dependent: :destroy
   has_many :projects, -> {uniq}, through: :workdays
-
+  has_many :tasks, as: :taskable
+  
   accepts_nested_attributes_for :workdays
 
   validates_presence_of :firstName, :lastName, :email

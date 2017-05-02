@@ -1,0 +1,44 @@
+when the administrator selects a project, he wants to see users assigned to that project.
+
+when the administrator selects a project, he wants to see tasks assigne to a user
+
+When the administrator selects a project, he wants to see total hours worked by a user on the project
+
+when the administrator selects a project, he wants to see total hours worked by a user divided into tasks per project
+
+User data will include:
+- User workdays on the project
+- User task time for overall project
+- User task time for individual day
+
+
+User Current Associations -
+- belongs to an account
+- has many projects that are unique
+- has many workdays
+- belongs to task
+- user.tasks.first.name
+
+Project Current Associations - 
+- belongs to account
+- has many workdays
+- has many unique users through workdays
+- has many tasks
+- project.users.first
+- project.tasks.first.users
+- project.tasks.first.users.first.actual_time
+
+
+Task Current Associations - 
+- belongs to project
+- has many users?
+- task.users.first.actual_time
+
+
+
+
+
+Account Current Associations - 
+- Account has many projects
+- Account has many users
+- Account has many roles

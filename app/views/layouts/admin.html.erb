@@ -82,6 +82,11 @@
               <span><i class="fa fa-id-card"></i> Roles</span>
             <% end %>
           </li>
+          <li>
+            <%= link_to admin_tasks_path do %>
+              <span><i class="fa fa-tasks"></i> Tasks</span>
+            <% end %>
+          </li>
       <% if current_user.role == "SuperUser" %>
       <hr>
           <li>
